@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins";
+}
+body {
+  background-color: #808080;
+}
+
+.content {
+  margin: 50px;
+  padding: 100px;
+  background-color: #fff;
+}
+
+.container-card {
+  margin: 0px auto;
+  width: 550px;
+  background-color: aqua;
+}
+
+.artikel p {
+  margin-top: 15px;
+  text-align: justify;
+  word-spacing: -1px;
+}
+
+.btn-info {
+  margin-top: 15px;
+}
+
+.btn-contact {
+  padding: 7px 30px;
+  font-size: 15px;
+  color: #fff;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 20px;
+}
