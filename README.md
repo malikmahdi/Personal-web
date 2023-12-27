@@ -1,1 +1,1 @@
-# b52-personal-web
+# personal-web
