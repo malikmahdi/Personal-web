@@ -1,0 +1,61 @@
+/* Style Navbar */
+.navbar {
+  background-color: #f4f3f3;
+  padding: 15px 0px;
+}
+
+.container-nav {
+  display: flex;
+  /* height: 100%; */
+  margin: 0px 60px;
+  padding: auto 0px;
+  align-items: center;
+}
+
+.container-nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-logo a img {
+  width: 70px;
+  margin-right: 10px;
+}
+
+.container-nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+.nav-link a {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-link a:hover {
+  color: orangered;
+}
+
+.nav-home {
+  font-weight: bold;
+}
+.kontak {
+  /* background-color: yellow; */
+  width: 100%;
+  text-align: end;
+}
+.kontak a {
+  padding: 7px 18px;
+  border: 1 solid black;
+  border-radius: 7px;
+  color: #fff;
+  background-color: #111727;
+  text-decoration: none;
+}
+.kontak a:hover {
+  background-color: orangered;
+}
+/* Close Style Navbar */

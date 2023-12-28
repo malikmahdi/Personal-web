@@ -1,23 +1,31 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins";
-}
 body {
-  background-color: #808080;
+  background-color: #e3e7eb;
 }
 
+/* Style Content */
 .content {
   margin: 50px;
-  padding: 100px;
+  padding: 60px 60px;
   background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .container-card {
   margin: 0px auto;
-  width: 550px;
-  /* background-color: aqua; */
+}
+
+.row {
+  display: flex;
+}
+
+.row .col-1 {
+  width: 60%;
+}
+
+.artikel h1 {
+  margin-top: 35px;
 }
 
 .artikel p {
@@ -25,16 +33,17 @@ body {
   color: #323232;
   font-size: 17px;
   text-align: justify;
-  word-spacing: -2px;
-  /* word-break: break-all; */
 }
 
 .btn-info {
-  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  gap: 25px;
 }
 
 .btn-contact {
-  padding: 6px 30px;
+  padding: 8px 30px;
   font-size: 16px;
   color: #fff;
   background-color: black;
@@ -43,11 +52,11 @@ body {
   cursor: pointer;
 }
 .btn-contact:hover {
-  background-color: rgb(53, 53, 53);
+  background-color: orangered;
+  border-color: orangered;
 }
 
 .link-cv {
-  margin-top: 20px;
   align-items: center;
 }
 
@@ -62,32 +71,35 @@ body {
 }
 
 .link-cv a img {
-  margin-top: -2px;
   margin-left: 7px;
   width: 30px;
 }
 
-.icon {
-  margin: 40px 0px;
-  text-align: center;
-  letter-spacing: 25px;
+.sosmed {
+  margin: 60px 0px 0px 0px;
+  letter-spacing: 20px;
 }
 
-.icon a {
+.sosmed a {
   text-decoration: none;
 }
 
-.icon img {
+.sosmed img {
   width: 45px;
   cursor: pointer;
 }
 
+.row .col-2 {
+  width: 40%;
+  display: flex;
+  justify-content: end;
+}
+
 .card {
-  width: 400px;
-  margin: 20px auto;
+  width: 430px;
+  justify-content: end;
   padding-bottom: 15px;
   text-align: center;
-  /* border: 1px solid rgb(215, 215, 215); */
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
 }
@@ -101,3 +113,4 @@ body {
   margin-top: 5px;
   font-size: 28px;
 }
+/* Close Style Content */
