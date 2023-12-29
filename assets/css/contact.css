@@ -46,10 +46,6 @@ form input {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-form input:focus {
-  border: red;
-}
-
 form select {
   appearance: none;
   padding: 11px 10px;
@@ -75,7 +71,7 @@ form textarea {
   text-align: end;
   margin-top: 30px;
 }
-.btn-form button {
+.btn-form .btn-submit {
   padding: 8px 30px;
   border: none;
   border-radius: 20px;
@@ -84,7 +80,7 @@ form textarea {
   font-size: 15px;
   cursor: pointer;
 }
-.btn-form button:hover {
+.btn-form .btn-submit:hover {
   background-color: orangered;
 }
 /* Close Style Content Form */

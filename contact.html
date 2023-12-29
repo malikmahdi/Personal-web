@@ -39,22 +39,31 @@
             <label for="email">Email</label>
             <input type="text" id="email" name="" value="" />
             <label for="phone">Phone Number</label>
-            <input type="text" id="phone" name="" value="" />
+            <input type="number" id="phone" name="" value="" />
             <label for="phone">Subject</label>
-            <select name="" id="">
+            <select name="" id="subject">
               <option hidden></option>
               <option>Frontend Developer</option>
               <option>Backend Developer</option>
               <option>Fullstack Developer</option>
             </select>
-            <label for="description">Your Message</label>
-            <textarea name="" id="description" cols="30 " rows="10"></textarea>
-            <div class="btn-form"><button>Submit</button></div>
+            <label for="message">Your Message</label>
+            <textarea name="" id="message" cols="30 " rows="10"></textarea>
+            <div class="btn-form">
+              <input
+                type="button"
+                value="Submit"
+                class="btn-submit"
+                onclick="submited()"
+              />
+            </div>
           </form>
         </div>
         <!-- Close Form -->
       </div>
     </div>
     <!-- Close Form Content -->
+
+    <script src="assets/js/contact.js"></script>
   </body>
 </html>
