@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Web | Form Project</title>
+    <link rel="stylesheet" href="assets/css/project.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <!-- Fontawesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container-nav">
+        <ul>
+          <li class="nav-logo">
+            <a href="#"><img src="assets/img/dumbways.png" alt="" /></a>
+          </li>
+          <li class="nav-link"><a href="index.html">Home</a></li>
+          <li class="nav-link nav-myproject">
+            <a href="#">My&nbsp;Project</a>
+          </li>
+        </ul>
+
+        <div class="kontak">
+          <a href="contact.html">Contact Me</a>
+        </div>
+      </div>
+    </nav>
+    <!-- Close Navbar -->
+
+    <!-- Form Content -->
+    <div class="content">
+      <div class="container-form">
+        <div class="tittle"><h1>ADD MY PROJECT</h1></div>
+        <!-- Form -->
+        <div class="content-form">
+          <form action="" onsubmit="submitProject(event)">
+            <label for="inputTittle">Project Name</label>
+            <input type="text" id="inputTittle" name="" value="" />
+
+            <!-- Date Group -->
+            <div class="date-group">
+              <!-- Start-date-group -->
+              <div class="start-d">
+                <label for="inputStartDate">Start Date</label>
+                <input type="date" id="inputStartDate" />
+              </div>
+              <!-- Close Start-date-group -->
+
+              <!-- End-date-group -->
+              <div class="end-d">
+                <label for="inputEndDate">End Date</label>
+                <input type="date" id="inputEndDate" />
+              </div>
+              <!-- Close End-date-group -->
+            </div>
+            <!-- Close Date Group -->
+
+            <label for="description">Description</label>
+            <textarea name="" id="description" cols="30 " rows="8"></textarea>
+
+            <!-- Checkbox Group -->
+            <label for="message">Technologies</label>
+            <div class="checkbox-group">
+              <div class="cb-col-1">
+                <input type="checkbox" id="inputReact" />
+                <label for="inputReact">React Js</label>
+                <br />
+                <input type="checkbox" id="inputNode" />
+                <label for="inputNode">Node Js</label>
+              </div>
+
+              <div class="cb-col-2">
+                <input type="checkbox" id="inputVue" />
+                <label for="inputVue">Vue Js</label>
+                <br />
+                <input type="checkbox" id="inputJs" />
+                <label for="inputJs">Javascript</label>
+              </div>
+            </div>
+            <!-- Close Checkbox Group -->
+
+            <!-- Upload File -->
+            <div class="file-image-group">
+              <label for="">Upload File image</label>
+              <div class="image-group-2">
+                <label for="inputImage">
+                  <p>Choose</p>
+                  <img src="assets/img/clip.png" width="20" alt="" />
+                </label>
+                <input type="file" id="inputImage" hidden />
+              </div>
+            </div>
+            <!-- Close Upload File -->
+
+            <!-- Button Form -->
+            <div class="btn-form">
+              <button class="btn-submit">Submit</button>
+            </div>
+            <!-- Close Button Form -->
+          </form>
+        </div>
+        <!-- Close Form -->
+      </div>
+    </div>
+    <!-- Close Form Content -->
+
+    <!-- Content Project -->
+    <section class="sec-project-view">
+      <div class="container">
+        <!-- Title section -->
+        <div class="tittle-section">
+          <h1>MY PROJECT</h1>
+        </div>
+        <br /><br /><br />
+
+        <!-- Row Card -->
+        <div class="row-card" id="contentProject">
+          <!-- Content added from javascript -->
+        </div>
+        <!-- Close Row Card -->
+      </div>
+    </section>
+    <!-- Close Content Project -->
+
+    <script src="assets/js/contact.js"></script>
+    <script src="assets/js/project.js"></script>
+  </body>
+</html>
