@@ -249,6 +249,7 @@ form textarea {
 
   .start-d input {
     width: 96.5%;
+    background-color: #fff;
   }
 
   .end-d {
@@ -256,6 +257,7 @@ form textarea {
   }
   .end-d input {
     width: 96.5%;
+    background-color: aquamarine;
   }
 
   .sec-project-view {
