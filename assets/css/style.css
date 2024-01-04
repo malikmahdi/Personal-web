@@ -131,6 +131,10 @@ body {
     width: 100%;
   }
 
+  .artikel h1 {
+    font-size: 30px;
+  }
+
   .sosmed {
     margin-top: 50px;
     text-align: center;
@@ -150,8 +154,8 @@ body {
   }
 
   .btn-contact {
-    padding: 6px 25px;
-    font-size: 14px;
+    padding: 7px 27px;
+    font-size: 16px;
   }
 
   .link-cv {
@@ -159,7 +163,7 @@ body {
   }
 
   .link-cv a {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .link-cv a img {
