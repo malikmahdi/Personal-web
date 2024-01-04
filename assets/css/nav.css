@@ -104,9 +104,16 @@
 
 @media only screen and (max-width: 600px) {
   .container-nav {
+    padding-top: 6px;
     margin: 0px 30px;
     padding-bottom: 13px;
   }
+
+  .nav-logo a img {
+    width: 60px;
+    margin-right: 10px;
+  }
+
   .nav-link,
   .kontak a {
     display: none;
