@@ -97,6 +97,7 @@ body {
 
 .card {
   width: 430px;
+  height: 515px;
   justify-content: end;
   padding-bottom: 15px;
   text-align: center;
@@ -114,3 +115,37 @@ body {
   font-size: 28px;
 }
 /* Close Style Content */
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  .content {
+    padding: 30px 40px;
+  }
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row .col-1 {
+    width: 100%;
+  }
+
+  .sosmed {
+    margin-top: 50px;
+    text-align: center;
+    /* letter-spacing: 15px; */
+  }
+
+  .row .col-2 {
+    margin: 50px auto;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    height: 100%;
+    padding-bottom: 25px;
+  }
+}
+/* Close Media Queries */

@@ -1,0 +1,141 @@
+body {
+  background-color: #dce0e4;
+}
+
+.nav-project {
+  font-weight: bold;
+}
+
+.container {
+  margin: 40px 60px;
+}
+
+.tittle-section h1 {
+  text-align: center;
+  font-size: 37px;
+}
+
+.row {
+  display: flex;
+  margin-top: 70px;
+  height: 400px;
+}
+
+.row .col-1 {
+  width: 65%;
+  margin-right: 40px;
+}
+
+.row .col-1 img {
+  width: 100%;
+  height: 100%;
+}
+
+.row .col-2 {
+  width: 35%;
+}
+
+.col-2 h4 {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+/* Styling duration */
+.col-duration .calcu-group {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  gap: 8px;
+}
+
+.col-duration img {
+  width: 33px;
+}
+
+.col-duration p {
+  color: grey;
+}
+
+.col-duration .clock-group {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Close Styling duration */
+
+/* Styling col tech */
+.col-tech {
+  margin-top: 40px;
+}
+
+.row-col-tech {
+  margin-top: 20px;
+  display: flex;
+}
+
+.row-col-tech small {
+  font-size: 16px;
+}
+.row-col-tech i {
+  font-size: 36px;
+}
+
+.col-tech-1 {
+  width: 50%;
+}
+.react-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.node-group {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.col-tech-2 {
+  width: 50%;
+}
+.vue-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.js-group {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+/* Close Styling col tech */
+
+/* Styling artikel */
+.section-artikel {
+  padding: 8px 0px;
+}
+
+.artikel {
+  text-align: justify;
+}
+/* Close Styling artikel */
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+  .row .col-1 {
+    width: 100%;
+    /* margin-right: 40px; */
+  }
+  .row .col-2 {
+    margin-top: 30px;
+    width: 100%;
+  }
+}
+/* Close Media Queries */

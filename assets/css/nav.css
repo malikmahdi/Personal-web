@@ -1,7 +1,9 @@
 /* Style Navbar */
 .navbar {
   background-color: #f4f3f3;
-  padding: 15px 0px;
+  height: 75px;
+  padding-top: 20px;
+  /* padding: 15px 0px; */
 }
 
 .container-nav {
@@ -58,4 +60,72 @@
 .kontak a:hover {
   background-color: orangered;
 }
+
+.kontak i {
+  display: none;
+}
 /* Close Style Navbar */
+
+/* Styling for Navigasi Mobile */
+.nav-mobile {
+  display: flex;
+  position: absolute;
+  margin-top: -35%;
+  flex-direction: column;
+  text-align: center;
+}
+
+.nav-mobile .nav-link-bars {
+  background-color: #d5d2d2;
+  border: 1px solid #fff;
+  padding: 5px;
+  cursor: pointer;
+}
+.nav-mobile .nav-link-bars:hover {
+  background-color: #b0b0b0;
+}
+
+.nav-mobile a {
+  text-decoration: none;
+  color: #fff;
+}
+.nav-mobile .active {
+  background-color: #ff4500 !important;
+}
+
+.nav-mobile .actived {
+  background-color: #ff4500 !important;
+}
+
+.nav-mobile .actived:hover {
+  background-color: #c93600 !important;
+}
+/* Close Styling for Navigasi Mobile */
+
+@media only screen and (max-width: 600px) {
+  .container-nav {
+    margin: 0px 50px;
+    padding-bottom: 13px;
+  }
+  .nav-link,
+  .kontak a {
+    display: none;
+  }
+
+  .btn-bars {
+    border: none;
+  }
+
+  .btn-bars i {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-mobile {
+    display: none;
+    position: static;
+    margin-top: 0px;
+    flex-direction: column;
+    text-align: center;
+  }
+}
