@@ -238,7 +238,7 @@ form textarea {
   }
 
   form {
-    width: 100%;
+    width: 100vh;
     background-color: yellow;
   }
 
@@ -252,8 +252,15 @@ form textarea {
     width: 100%;
   }
 
+  .start-d input {
+    width: 97%;
+  }
+
   .end-d {
     width: 100%;
+  }
+  .end-d input {
+    width: 97;
   }
 
   .sec-project-view {
