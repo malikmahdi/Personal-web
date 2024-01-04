@@ -237,11 +237,6 @@ form textarea {
     width: 100%;
   }
 
-  form {
-    width: 100vh;
-    background-color: yellow;
-  }
-
   .date-group {
     display: flex;
     flex-direction: column;
@@ -253,7 +248,7 @@ form textarea {
   }
 
   .start-d input {
-    width: 97%;
+    width: 96.5%;
   }
 
   .end-d {
