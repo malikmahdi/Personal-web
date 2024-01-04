@@ -59,11 +59,17 @@ form textarea {
   display: flex;
   flex-direction: column;
 }
+.start-d input {
+  background-color: #fff;
+}
 
 .end-d {
   width: 50%;
   display: flex;
   flex-direction: column;
+}
+.end-d input {
+  background-color: #fff;
 }
 
 .checkbox-group {
@@ -246,10 +252,8 @@ form textarea {
   .start-d {
     width: 100%;
   }
-
   .start-d input {
     width: 96.5%;
-    background-color: #fff;
   }
 
   .end-d {
@@ -257,13 +261,13 @@ form textarea {
   }
   .end-d input {
     width: 96.5%;
-    background-color: aquamarine;
   }
 
   .sec-project-view {
     padding: 30px 0px;
     background-color: #fff;
   }
+
   .sec-project-view .container {
     margin: 0px 20px;
   }
