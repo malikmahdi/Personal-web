@@ -239,6 +239,7 @@ form textarea {
 
   form {
     width: 100%;
+    background-color: yellow;
   }
 
   .date-group {
