@@ -237,6 +237,7 @@ form textarea {
   .date-group {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .start-d {
