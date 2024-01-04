@@ -97,6 +97,7 @@ body {
 
 .card {
   width: 430px;
+  height: 515px;
   justify-content: end;
   padding-bottom: 15px;
   text-align: center;
