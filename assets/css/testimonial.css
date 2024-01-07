@@ -1,0 +1,72 @@
+/* ----------------Styling Section Project------------ */
+.section-myProject {
+  padding: 40px 60px 100px 60px;
+  background-color: #e3e7eb;
+}
+
+.tittle-sec h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.container-myProject {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.card-project {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 400px;
+  margin: 1%;
+  padding: 1px;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+}
+
+.card-project .col-card-img {
+  height: 70%;
+  margin: 25px 25px 12px 25px;
+  background-color: grey;
+}
+.card-project img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-project .col-card-2 {
+  padding: 0px;
+  margin: 5px 25px 0px 25px;
+}
+
+.text-quote {
+  color: #6d6d6d;
+}
+
+.author-name {
+  text-align: end;
+  font-size: 16px;
+  font-weight: 600;
+  color: #424242;
+}
+
+/* ----------card---------- */
+
+/* -----------Media Queries----------- */
+@media only screen and (max-width: 600px) {
+  .section-myProject {
+    padding: 40px 20px 70px 20px;
+  }
+
+  .container-myProject {
+    flex-direction: column;
+  }
+
+  .card-project {
+    width: 100%;
+    margin: 2% auto;
+  }
+}

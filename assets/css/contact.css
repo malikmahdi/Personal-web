@@ -46,10 +46,6 @@ form input {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-form input:focus {
-  border: red;
-}
-
 form select {
   appearance: none;
   padding: 11px 10px;
@@ -58,6 +54,7 @@ form select {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   font-size: 15px;
   background-image: url("../img/downarrow.png");
+  background-color: #fff;
   background-size: 12px 18px;
   background-repeat: no-repeat;
   background-position: right 10px center;
@@ -75,7 +72,7 @@ form textarea {
   text-align: end;
   margin-top: 30px;
 }
-.btn-form button {
+.btn-form .btn-submit {
   padding: 8px 30px;
   border: none;
   border-radius: 20px;
@@ -84,7 +81,19 @@ form textarea {
   font-size: 15px;
   cursor: pointer;
 }
-.btn-form button:hover {
+.btn-form .btn-submit:hover {
   background-color: orangered;
 }
 /* Close Style Content Form */
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  .content {
+    padding: 15px;
+  }
+  .container-form {
+    width: 100%;
+    margin: 0px auto;
+  }
+}
+/* Close Media Queries */
