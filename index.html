@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/nav.css" />
+    <!-- Fontawesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- Navbar -->
@@ -17,15 +25,26 @@
           <li class="nav-logo">
             <a href="#"><img src="assets/img/dumbways.png" alt="" /></a>
           </li>
-          <li class="nav-link nav-home"><a href="#">Home</a></li>
-          <li class="nav-link"><a href="#">My&nbsp;Project</a></li>
+          <li class="nav-link nav-active"><a href="#">Home</a></li>
+          <li class="nav-link"><a href="project.html">My&nbsp;Project</a></li>
+          <li class="nav-link"><a href="testimonial.html">Testimonials</a></li>
         </ul>
 
         <div class="kontak">
           <a href="contact.html">Contact Me</a>
+          <button class="btn-bars" onclick="openBars()">
+            <i class="fa-solid fa-bars fa-2x"></i>
+          </button>
         </div>
       </div>
     </nav>
+    <!-- Navigasi for mobile -->
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#" class="nav-link-bars active">Home</a>
+      <a href="project.html" class="nav-link-bars">My Project</a>
+      <a href="testimonial.html" class="nav-link-bars">Testimonials</a>
+      <a href="contact.html" class="nav-link-bars">Contact Me</a>
+    </div>
     <!-- Close Navbar -->
 
     <!-- Content -->
@@ -39,16 +58,16 @@
             <div class="artikel">
               <h1>Welcome to My Personal Website</h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. In
-                obcaecati ex veritatis ut, vitae non maxime, magnam fuga iure
-                facilis, undes consequatur dicta asperiores temporibus est
-                ullam!vitae non maxime, magnam fuga iure facilis, unde quis
-                dolorum necessitatibus consequatur dicta asperiores tempo ribus
-                est ullam.obcaecati ex veritatis ut, vitae non maxime, magnam
-                fuga unde iure consectetur adipisicing elit unde sit undes
-                consequatur dicta asperiores temporibus est ullam!vitae non
-                maxime, magnam fuga iure facilis, unde quis consectetur
-                adipisicing veritatis sit etc.
+                Saya Malik Mahdi berasal dari JAKARTA , saya lulusan SMK NEGERI
+                12 JAKARTA kejuruan Rekayasa Perangkat Lunak, setelah lulus saya
+                sempat bekerja disalah satu pabrik didaerah Cikarang, karena
+                dengan rasa keingintahuan saya terhadap dunia Programming, saya
+                memutuskan untuk mendalami kembali bidang ini dengan mengikuti
+                pembelajaran di Bootcamp Dumbways agar saya bisa belajar lebih
+                banyak dan terstruktur mengenai Pemrograman sekaligus menjadi
+                jalan untuk jenjang karir saya kedepannya. Jika anda tertarik
+                untuk bekerja sama dengan saya anda bisa menghubungi kontak saya
+                dibawah ini, Terimakasih.
               </p>
             </div>
             <!-- Close Artikel -->
@@ -84,7 +103,7 @@
                   alt="Instagram In picture"
                 />
               </a>
-              <a href="https://www.facebook.com/malikhorizone">
+              <a href="#">
                 <img src="assets/img/facebook.png" alt="Facebook In picture" />
               </a>
               <a href="#">
@@ -113,5 +132,7 @@
       </div>
     </div>
     <!-- Close Content -->
+
+    <script src="assets/js/nav.js"></script>
   </body>
 </html>
