@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Web | Contact</title>
+
+    <link rel="stylesheet" href="assets/css/contact.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <!-- Fontawesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container-nav">
+        <ul>
+          <li class="nav-logo">
+            <a href="#"><img src="assets/img/dumbways.png" alt="" /></a>
+          </li>
+          <li class="nav-link"><a href="index.html">Home</a></li>
+          <li class="nav-link"><a href="project.html">My&nbsp;Project</a></li>
+          <li class="nav-link"><a href="testimonial.html">Testimonials</a></li>
+        </ul>
+
+        <div class="kontak">
+          <a href="#">Contact Me</a>
+          <button class="btn-bars" onclick="openBars()">
+            <i class="fa-solid fa-bars fa-2x"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Navigasi for mobile -->
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html" class="nav-link-bars">Home</a>
+      <a href="project.html" class="nav-link-bars">My Project</a>
+      <a href="testimonial.html" class="nav-link-bars">Testimonials</a>
+      <a href="#" class="nav-link-bars active">Contact Me</a>
+    </div>
+    <!-- Close Navbar -->
+
+    <!-- Form Content -->
+    <div class="content">
+      <div class="container-form">
+        <div class="tittle"><h1>GET IN TOUCH</h1></div>
+        <!-- Form -->
+        <div class="content-form">
+          <form action="">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="" value="" />
+            <label for="email">Email</label>
+            <input type="text" id="email" name="" value="" />
+            <label for="phone">Phone Number</label>
+            <input type="number" id="phone" name="" value="" />
+            <label for="phone">Subject</label>
+            <select name="" id="subject">
+              <option hidden></option>
+              <option>Frontend Developer</option>
+              <option>Backend Developer</option>
+              <option>Fullstack Developer</option>
+            </select>
+            <label for="message">Your Message</label>
+            <textarea name="" id="message" cols="30 " rows="10"></textarea>
+            <div class="btn-form">
+              <input
+                type="button"
+                value="Submit"
+                class="btn-submit"
+                onclick="submited()"
+              />
+            </div>
+          </form>
+        </div>
+        <!-- Close Form -->
+      </div>
+    </div>
+    <!-- Close Form Content -->
+
+    <script src="assets/js/contact.js"></script>
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>

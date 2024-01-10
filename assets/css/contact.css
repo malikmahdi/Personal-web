@@ -1,0 +1,99 @@
+body {
+  background-color: #e3e7eb;
+}
+
+/* Style Navbar */
+.kontak a {
+  background-color: orangered !important;
+}
+.kontak a:hover {
+  background-color: rgb(208, 56, 0) !important;
+}
+/* Close Style Navbar */
+
+/* Style Content Form */
+.content {
+  padding: 40px;
+}
+
+.tittle h1 {
+  text-align: center;
+}
+
+.container-form {
+  width: 700px;
+  margin: 0px auto;
+}
+.container-form form {
+  justify-content: center;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+form label {
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+form input {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+form select {
+  appearance: none;
+  padding: 11px 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-size: 15px;
+  background-image: url("../img/downarrow.png");
+  background-color: #fff;
+  background-size: 12px 18px;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+}
+
+form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn-form {
+  text-align: end;
+  margin-top: 30px;
+}
+.btn-form .btn-submit {
+  padding: 8px 30px;
+  border: none;
+  border-radius: 20px;
+  background-color: #111727;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn-form .btn-submit:hover {
+  background-color: orangered;
+}
+/* Close Style Content Form */
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  .content {
+    padding: 15px;
+  }
+  .container-form {
+    width: 100%;
+    margin: 0px auto;
+  }
+}
+/* Close Media Queries */
