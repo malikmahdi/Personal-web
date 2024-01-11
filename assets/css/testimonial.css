@@ -1,0 +1,47 @@
+/* Styling Navbar */
+.bg-nav {
+  background-color: #f4f3f3 !important;
+}
+
+.navbar-brand img {
+  width: 70px;
+}
+
+.nav-link:hover {
+  color: orangered !important;
+}
+
+.btn-contact-us {
+  background-color: orangered !important;
+}
+.btn-contact-us:hover {
+  background-color: rgb(216, 58, 0) !important;
+}
+/* Close Style Navbar */
+
+/* Styling Content */
+.sec-project {
+  background-color: #e3e7eb;
+}
+
+.btn-rate {
+  letter-spacing: 10px;
+}
+
+.btn-rate button:focus {
+  background-color: red !important;
+}
+
+.card {
+  margin: 3%;
+}
+
+.card img {
+  height: 250px;
+}
+
+.alert-text {
+  margin-top: 5%;
+  margin-bottom: 25vh;
+}
+/* Close Styling Content */
