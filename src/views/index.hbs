@@ -1,11 +1,14 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Personal Web | Home</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/fav-mylogo.png" />
+
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/nav.css" />
+
     <!-- Cdn Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -17,9 +20,10 @@
   <body>
     <nav class="navbar bg-nav navbar-expand-lg px-lg-5 px-sm-4 py-4">
       <div class="container-fluid">
-        <a class="navbar-brand nav-logo me-5" href="#"
-          ><img src="../assets/img/dumbways.png" alt=""
-        /></a>
+        <a class="navbar-brand nav-logo me-5" href="#"><img
+            src="../assets/img/mylogo.png"
+            alt=""
+          /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -35,29 +39,25 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item me-4">
               <a
-                class="nav-link text-danger fw-bold"
+                class="nav-link nav-active fw-bold"
                 aria-current="page"
                 href="#"
-                >Home</a
-              >
+              >Home</a>
             </li>
             <li class="nav-item me-4">
-              <a class="nav-link text-dark" href="project.html">Add Project</a>
+              <a class="nav-link text-dark" href="/project">Add Project</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" href="testimonial.html"
-                >Testimonials</a
-              >
+              <a class="nav-link text-dark" href="/testimonial">Testimonials</a>
             </li>
           </ul>
           <form class="d-flex" role="">
             <a
-              href="contact.html"
-              class="btn btn-contact-us text-light w-100"
+              href="/contact-me"
+              class="btn btn-contact-me bg-primary text-light w-100"
               type="submit"
             >
-              Contact Me</a
-            >
+              Contact Me</a>
           </form>
         </div>
       </div>
@@ -83,17 +83,15 @@
             <a
               href="https://api.whatsapp.com/send?phone=6281294983223&text=Halo,%20Saya%20ingin%20membuat%20Project%20dengan%20anda"
               target="_blank"
-              class="btn btn-contact pt-2 pb-2 pe-4 ps-4 bg-dark text-light rounded-pill me-4"
+              class="btn btn-contact pt-2 pb-2 pe-4 ps-4 bg-dark text-white rounded-pill me-4"
               type="submit"
-              >Contact</a
-            >
+            >Contact</a>
 
             <a
               href="https://drive.google.com/file/d/1rRyxm3_9uDUOhopctXdrUdPMJJdv1Mpm/view?usp=drive_link"
               target="_blank"
               class="fs-6 pe-5 text-decoration-none text-dark"
-              >Download CV <img src="../assets/img/download.png" alt=""
-            /></a>
+            >Download CV <img src="../assets/img/download.png" alt="" /></a>
           </div>
 
           <div class="ikon mt-5 pt-3 text-lg-start text-sm-center">

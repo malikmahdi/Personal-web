@@ -23,13 +23,13 @@ function submitProject(event) {
     ? `<i class="fa-brands fa-react fa-2xl"></i>`
     : "";
   let node = document.getElementById("inputNode").checked
-    ? ` <i class="fa-brands fa-node-js fa-2xl"></i>`
+    ? `<i class="fa-brands fa-node-js fa-2xl"></i>`
     : ``;
   let vue = document.getElementById("inputVue").checked
     ? `<i class="fa-brands fa-vuejs fa-2xl"></i>`
     : ``;
   let js = document.getElementById("inputJs").checked
-    ? ` <i
+    ? `<i
   class="fa-brands fa-square-js fa-2xl"
   style="color: #000000"></i>`
     : ``;
@@ -163,7 +163,7 @@ function renderProject() {
       />
       <div class="card-body">
         <h5 class="card-title fw-bold">
-        <a href="project-detail2.html" class="text-dark text-decoration-none">${dataProject[index].tittle}</a>
+        <a href="project-detaill.html" target="_blank" class="text-dark text-decoration-none">${dataProject[index].tittle}</a>
         </h5>
         <small class="text-secondary">
         <i class="fa-regular fa-clock"></i> ${dataProject[index].timeProject} | <i class="fa-regular fa-user"></i> ${dataProject[index].author}

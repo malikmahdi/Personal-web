@@ -2,16 +2,6 @@ body {
   background-color: #e3e7eb !important;
 }
 
-/* Style Navbar */
-.navbar-brand img {
-  width: 70px !important;
-}
-
-.btn-contact-us:hover {
-  background-color: orangered !important;
-}
-/* Close Style Navbar */
-
 /* Style Content Form */
 .form-select {
   background-image: url("../img/downarrow.png") !important;
@@ -20,6 +10,6 @@ body {
 }
 
 .btn-submit:hover {
-  background-color: orangered !important;
+  background-color: #0058dc !important;
 }
 /* Close Style Content Form */

@@ -2,19 +2,6 @@ body {
   background-color: #e3e7eb !important;
 }
 
-/* Style Navbar */
-.navbar-brand img {
-  width: 70px !important;
-}
-
-.btn-contact-me {
-  background-color: orangered !important;
-}
-.btn-contact-me:hover {
-  background-color: rgb(216, 58, 0) !important;
-}
-/* Close Style Navbar */
-
 /* Styling Content Project */
 .col-img img {
   width: 100%;
@@ -26,7 +13,7 @@ body {
 }
 
 .icon-tech {
-  letter-spacing: 8px;
+  /* letter-spacing: 8px; */
 }
 
 .icon-tech i {

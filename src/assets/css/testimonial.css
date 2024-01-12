@@ -1,0 +1,26 @@
+/* Styling Content */
+.sec-project {
+  background-color: #e3e7eb;
+}
+
+.btn-rate {
+  letter-spacing: 10px;
+}
+
+.btn-rate button:focus {
+  background-color: #106cf6 !important;
+}
+
+.card {
+  margin: 3%;
+}
+
+.card img {
+  height: 250px;
+}
+
+.alert-text {
+  margin-top: 5%;
+  margin-bottom: 25vh;
+}
+/* Close Styling Content */

@@ -1,9 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Personal Web | Contact</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/fav-mylogo.png" />
+
     <link rel="stylesheet" href="../assets/css/contact.css" />
     <link rel="stylesheet" href="../assets/css/nav.css" />
     <link rel="stylesheet" href="../assets/css/index.css" />
@@ -18,9 +19,10 @@
     <!-- Navbar -->
     <nav class="navbar bg-nav navbar-expand-lg px-lg-5 px-sm-4 py-4">
       <div class="container-fluid">
-        <a class="navbar-brand me-5" href="#"
-          ><img src="../assets/img/dumbways.png" alt="Logo Dumbways"
-        /></a>
+        <a class="navbar-brand me-5" href="#"><img
+            src="../assets/img/mylogo.png"
+            alt="Logo Dumbways"
+          /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,26 +40,22 @@
               <a
                 class="nav-link text-dark"
                 aria-current="page"
-                href="index.html"
-                >Home</a
-              >
+                href="/home"
+              >Home</a>
             </li>
             <li class="nav-item me-4">
-              <a class="nav-link" href="project.html">Add Project</a>
+              <a class="nav-link text-dark" href="/project">Add Project</a>
             </li>
             <li class="nav-item me-4">
-              <a class="nav-link text-dark" href="testimonial.html"
-                >Testimonials</a
-              >
+              <a class="nav-link text-dark" href="/testimonial">Testimonials</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
             <a
               href="#"
-              class="btn bg-dark btn-contact-us text-light w-100"
+              class="btn bg-dark text-light w-100"
               type="submit"
-              >Contact Me</a
-            >
+            >Contact Me</a>
           </form>
         </div>
       </div>
@@ -97,9 +95,7 @@
 
             <!-- Input Phone -->
             <div class="mb-3">
-              <label for="phone" class="form-label fw-medium"
-                >Phone Number</label
-              >
+              <label for="phone" class="form-label fw-medium">Phone Number</label>
               <input
                 type="text"
                 class="form-control shadow"
@@ -125,9 +121,7 @@
 
             <!-- Input Description -->
             <div class="mb-3">
-              <label for="message" class="form-label fw-medium"
-                >Your Message</label
-              >
+              <label for="message" class="form-label fw-medium">Your Message</label>
               <textarea
                 placeholder="Can i help you?"
                 class="form-control shadow"

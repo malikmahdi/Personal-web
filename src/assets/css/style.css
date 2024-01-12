@@ -1,27 +1,8 @@
-.bg-nav {
-  background-color: #f4f3f3;
-}
-
+/* Styling Content */
 body {
   background-color: #e3e7eb !important;
 }
 
-/* Styling Navbar */
-.navbar-brand img {
-  width: 70px;
-}
-.nav-link:hover {
-  color: orangered !important;
-}
-
-.btn-contact-us {
-  background-color: orangered !important;
-}
-.btn-contact-us:hover {
-  background-color: rgb(216, 58, 0) !important;
-}
-
-/* Styling Content */
 .bg-container {
   background-color: #fff;
 }
@@ -32,7 +13,7 @@ body {
 
 .container-btnlink .btn-contact:hover {
   text-decoration: none !important;
-  background-color: orangered !important;
+  background-color: #0058dc !important;
 }
 
 .container-btnlink a:hover {

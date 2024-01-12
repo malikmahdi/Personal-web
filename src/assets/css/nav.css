@@ -1,0 +1,19 @@
+.bg-nav {
+  background-color: #f4f3f3;
+}
+
+.nav-active {
+  color: #004fc6 !important;
+}
+
+.navbar-brand img {
+  width: 70px;
+}
+
+.nav-link:hover {
+  color: #004fc6 !important;
+}
+
+.btn-contact-me:hover {
+  background-color: #004fc6 !important;
+}

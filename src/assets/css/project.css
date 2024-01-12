@@ -2,26 +2,6 @@ body {
   background-color: #e3e7eb !important;
 }
 
-/* Styling Navbar */
-.bg-nav {
-  background-color: #f4f3f3;
-}
-
-.navbar-brand img {
-  width: 70px;
-}
-
-.nav-link:hover {
-  color: orangered !important;
-}
-
-.btn-contact-us {
-  background-color: orangered !important;
-}
-.btn-contact-us:hover {
-  background-color: rgb(216, 58, 0) !important;
-}
-/* Close Style Navbar */
 .form-check-input {
   cursor: pointer;
   width: 17px !important;
@@ -80,5 +60,5 @@ form .input-blog-image-group img {
 }
 
 .ikon {
-  letter-spacing: 4px;
+  /* letter-spacing: 2px; */
 }
