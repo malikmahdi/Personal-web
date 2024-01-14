@@ -1,3 +1,5 @@
+document.getElementById("myTestimonial").innerHTML = load();
+
 const janji = new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "https://api.npoint.io/138098154e7a6e3e3724", true);
@@ -33,7 +35,15 @@ function html(item) {
 </div>`;
 }
 
+function load() {
+  return `
+  <div class="loader"></div>
+  `;
+}
+
 async function allTestimonial() {
+  document.getElementById("myTestimonial").innerHTML = load();
+
   let testimonialHtml = ``;
   const testimonialData = await janji;
   console.info(testimonialData);
@@ -48,11 +58,13 @@ allTestimonial();
 async function testimonialClick(rating) {
   let testimonialHtml = ``;
   const testimonialData = await janji;
+
   console.info(testimonialData);
 
   const filterTestimonial = testimonialData.filter((item) => {
     return item.rating === rating;
   });
+
   if (filterTestimonial.length === 0) {
     testimonialHtml = `<div class="alert-text">
       <h3 class="text-alert">404 NOT FOUND &#x1F62A;</h3>
