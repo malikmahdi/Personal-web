@@ -1,6 +1,6 @@
 const janji = new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "http://localhost:3000/dataTestimonial", true);
+  xhr.open("GET", "https://api.npoint.io/138098154e7a6e3e3724", true);
   xhr.onload = () => {
     if (xhr.status === 200) {
       console.info(xhr.response);
@@ -35,7 +35,15 @@ function html(item) {
 </div>`;
 }
 
+function load() {
+  return `
+  <div class="loader"></div>
+  `;
+}
+
 async function allTestimonial() {
+  document.getElementById("myTestimonial").innerHTML = load();
+
   let testimonialHtml = ``;
   const testimonialData = await janji;
   console.info(testimonialData);

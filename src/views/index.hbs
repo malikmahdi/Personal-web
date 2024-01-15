@@ -2,19 +2,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Personal Web | Home</title>
+    <title>Personal Web | {{tittleTab}}</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/fav-mylogo.png" />
 
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/index.css" />
     <link rel="stylesheet" href="../assets/css/nav.css" />
-
     <!-- Cdn Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
+    />
+    <!-- Cdn Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
   </head>
   <body>
@@ -149,6 +156,72 @@
         </div>
       </div>
     </div>
+
+    <section class="content-result-project bg-light pt-5 pb-5" id="sec-project">
+      <div class="container mt-5">
+        <h3 class="text-center fw-bold pb-5">MY PROJECT</h3>
+        <div class="text-end mt-3 mb-5"><a
+            href="/project"
+            class="btn bg-danger text-light"
+          ><i class="fa-solid fa-plus"></i>
+            Project</a></div>
+        <!-- Row -->
+        <div class="row" id="resultProject">
+          {{#each data}}
+            <div class="col-lg-4 mt-4">
+              <!-- Card -->
+              <div class="card border-0 shadow">
+                <img
+                  src="../assets/img/laptop.jpg"
+                  class="card-img-top"
+                  height="300"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    <a
+                      href="/project-detail"
+                      target="_blank"
+                      class="text-dark text-decoration-none"
+                    >{{this.tittle}}</a>
+                  </h5>
+                  <small class="text-secondary">
+                    <i class="fa-regular fa-clock"></i>
+                    {{this.timeProject}}
+                    |
+                    <i class="fa-regular fa-user"></i>
+                    {{this.author}}
+                  </small>
+                  <p class="text-paraf mt-2">
+                    {{this.desc}}
+                  </p>
+                  <div class="ikon-tech mt-4 mb-4">
+                    {{#each this.tech}}
+                      <i class="fa-brands {{this}} fa-2xl"></i>
+                    {{/each}}
+                  </div>
+                  <div class="btn-bottom d-flex justify-content-center mb-2">
+                    <a
+                      href="/reproject/{{@index}}"
+                      class="btn btn-dark me-1 p-0 w-50"
+                    >Edit</a>
+                    <a
+                      href="/delete/{{@index}}"
+                      class="btn btn-dark p-0 w-50"
+                    >Delete</a>
+                    {{!-- <a class="btn btn-secondary" href="/edit-blog/{{@index}}">Edit post</a>
+                        <a class="btn btn-primary" href="/delete/{{@index}}">Delete</a> --}}
+                  </div>
+                </div>
+              </div>
+              <!-- Close Card -->
+            </div>
+          {{/each}}
+          <!-- Data added with Javascript / Dynamis -->
+        </div>
+        <!-- Close Row -->
+      </div>
+    </section>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

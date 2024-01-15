@@ -75,8 +75,9 @@
     <div class="me-3 ms-3 mb-5">
       <div class="row justify-content-center">
         <div class="col-lg-6 mt-3">
-          <h1 class="text-center fw-bold mt-5 mb-4 pb-4">ADD MY PROJECT</h1>
-          <form action="/project" method="POST">
+          <h1 class="text-center fw-bold mt-5 mb-4 pb-4">UPDATE PROJECT</h1>
+          <form method="POST" action="/reproject">
+            <input type="hidden" name="id" value="{{data.id}}" />
             <!-- Input Name -->
             <div class="">
               <label for="inputTittle" class="form-label fw-medium">Project Name</label>
@@ -85,6 +86,7 @@
                 class="form-control shadow"
                 id="inputTittle"
                 name="tittle"
+                value="{{data.tittle}}"
                 aria-describedby="emailHelp"
               />
             </div>
@@ -99,6 +101,7 @@
                   class="form-control shadow"
                   id="inputStartDate"
                   name="startDate"
+                  value="{{data.startDate}}"
                 />
               </div>
 
@@ -109,6 +112,7 @@
                   class="form-control shadow"
                   id="inputEndDate"
                   name="endDate"
+                  value="{{data.endDate}}"
                 />
               </div>
             </div>
@@ -125,7 +129,7 @@
                 id="description"
                 name="desc"
                 rows="8"
-              ></textarea>
+              >{{data.desc}}</textarea>
             </div>
 
             <!-- Input Checbox Technologies -->
@@ -147,6 +151,7 @@
                     >React Js</label>
                   </div>
                 </div>
+
                 <div class="col-lg-6 col-sm-6">
                   <div class="mb-3 form-check d-flex align-items-center">
                     <input
@@ -192,6 +197,7 @@
                     <label
                       class="form-check-label ms-2 text-secondary"
                       for="inputJs"
+                      value="{{this.tech}}"
                     >Javacript</label>
                   </div>
                 </div>
