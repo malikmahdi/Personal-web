@@ -94,7 +94,7 @@ function addProject(req, res) {
     author: "Malik Mahdi",
   };
   data.unshift(proj);
-  console.log(`Data proj `, data);
+  console.log(`Data project `, data);
   res.redirect("home");
 }
 
