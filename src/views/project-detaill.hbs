@@ -74,77 +74,75 @@
     <!-- Close Navbar -->
 
     <!-- Content Project Detail -->
-    {{#each data}}
-      <section class="container pb-5">
-        <div class="text-center mt-3">
-          <h1 class="fw-bold mt-5" id="tittle">{{this.tittle}}</h1>
+    <section class="container pb-5">
+      <div class="text-center mt-3">
+        <h1 class="fw-bold mt-5" id="tittle">{{dataDetail.tittle}}</h1>
+      </div>
+      <!-- Flex -->
+      <div class="d-lg-flex">
+        <!-- Col image -->
+        <div class="col-lg-7 col-sm-12 mt-5 col-img pe-4">
+          <img
+            src="../assets/img/laptop.jpg"
+            class="img-fluid"
+            id="image"
+            alt=""
+          />
         </div>
-        <!-- Flex -->
-        <div class="d-lg-flex">
-          <!-- Col image -->
-          <div class="col-lg-7 col-sm-12 mt-5 col-img pe-4">
-            <img
-              src="../assets/img/laptop.jpg"
-              class="img-fluid"
-              id="image"
-              alt=""
-            />
-          </div>
-          <!-- Close Col image -->
+        <!-- Close Col image -->
 
-          <!-- Col Time Info -->
-          <div class="col-lg-5 col-sm-12 mt-5 col-info ps-3">
-            <!-- Duration Group -->
-            <div class="duration-group">
-              <h4 class="fs-2">Duration</h4>
-              <!-- Calcu Group -->
-              <div class="calcu-group d-flex align-items-center">
-                <img src="../assets/img/calculator.png" class="me-2" alt="" />
-                <p class="mt-3 text-secondary" id="thisTime">
-                  {{this.startDate}}
-                  |
-                  {{this.endDate}}
-                </p>
-              </div>
-              <!-- Close Calcu Group -->
-
-              <!-- Clock Group -->
-              <div class="clock-group d-flex align-items-center">
-                <img src="../assets/img/clock.png" class="me-2" alt="" />
-                <p
-                  class="mt-3 text-secondary"
-                  id="duration"
-                >{{this.timeProject}}</p>
-              </div>
-              <!-- Close Clock Group -->
+        <!-- Col Time Info -->
+        <div class="col-lg-5 col-sm-12 mt-5 col-info ps-3">
+          <!-- Duration Group -->
+          <div class="duration-group">
+            <h4 class="fs-2">Duration</h4>
+            <!-- Calcu Group -->
+            <div class="calcu-group d-flex align-items-center">
+              <img src="../assets/img/calculator.png" class="me-2" alt="" />
+              <p class="mt-3 text-secondary" id="thisTime">
+                {{dataDetail.startDate}}
+                |
+                {{dataDetail.endDate}}
+              </p>
             </div>
-            <!-- Close Duration Group -->
+            <!-- Close Calcu Group -->
 
-            <!-- Tecnologies Group -->
-            <div class="Tech-group mt-5">
-              <h4 class="fs-2">Technologies</h4>
-
-              <div class="icon-tech d-flex mt-3">
-                {{#each this.tech}}
-                  <div class="d-flex mt-4">
-                    <i class="fa-brands {{this}} fa-2xl"></i>
-                  </div>
-                {{/each}}
-              </div>
+            <!-- Clock Group -->
+            <div class="clock-group d-flex align-items-center">
+              <img src="../assets/img/clock.png" class="me-2" alt="" />
+              <p
+                class="mt-3 text-secondary"
+                id="duration"
+              >{{dataDetail.timeProject}}</p>
             </div>
-            <!-- Close Technologies Group -->
+            <!-- Close Clock Group -->
           </div>
-          <!-- Close Col Time Info -->
-        </div>
-        <!-- Close flex -->
+          <!-- Close Duration Group -->
 
-        <div class="paraf-content mt-5">
-          <p class="paraf" id="desc">
-            {{this.desc}}
-          </p>
+          <!-- Tecnologies Group -->
+          <div class="Tech-group mt-5">
+            <h4 class="fs-2">Technologies</h4>
+
+            <div class="icon-tech d-flex mt-3">
+              {{#each dataDetail.tech}}
+                <div class="d-flex mt-4">
+                  <i class="fa-brands {{this}} fa-2xl"></i>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+          <!-- Close Technologies Group -->
         </div>
-      </section>
-    {{/each}}
+        <!-- Close Col Time Info -->
+      </div>
+      <!-- Close flex -->
+
+      <div class="paraf-content mt-5">
+        <p class="paraf" id="desc">
+          {{dataDetail.desc}}
+        </p>
+      </div>
+    </section>
     <!-- Close Content Project Detail -->
 
     <script src="../assets/js/pro-detail.js"></script>

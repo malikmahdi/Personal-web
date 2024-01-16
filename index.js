@@ -173,8 +173,13 @@ function editProject(req, res) {
 }
 
 function projectDetail(req, res) {
+  const { id } = req.params;
   const tittleTab = "Detail Project";
-  res.render("project-detaill", { data, tittleTab });
+  const dataDetail = data[parseInt(id)];
+
+  dataDetail.id = parseInt(id);
+
+  res.render("project-detaill", { dataDetail, tittleTab });
 }
 
 function testimonial(req, res) {
