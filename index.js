@@ -90,7 +90,7 @@ function addProject(req, res) {
     endDate,
     timeProject,
     desc,
-    tech,
+    tech: Array.isArray(tech) ? tech : [tech],
     author: "Malik Mahdi",
   };
   data.unshift(proj);
@@ -166,7 +166,7 @@ function editProject(req, res) {
     endDate,
     timeProject,
     desc,
-    tech,
+    tech: Array.isArray(tech) ? tech : [tech],
     author: "Malik Mahdi",
     id,
   };

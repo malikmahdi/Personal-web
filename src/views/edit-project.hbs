@@ -196,7 +196,6 @@
                     <label
                       class="form-check-label ms-2 text-secondary"
                       for="inputJs"
-                      value="{{this.tech}}"
                     >Javacript</label>
                   </div>
                 </div>
@@ -300,5 +299,18 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      const selectedTechs = "{{data.tech}}"; const reactBox =
+      document.getElementById("inputReact"); const vueBox =
+      document.getElementById("inputVue"); const nodeBox =
+      document.getElementById("inputNode"); const jsBox =
+      document.getElementById("inputJs"); reactBox.checked =
+      selectedTechs.includes("fa-react"); vueBox.checked =
+      selectedTechs.includes("fa-vuej"); nodeBox.checked =
+      selectedTechs.includes("fa-node-js"); jsBox.checked =
+      selectedTechs.includes("fa-square-js");
+
+    </script>
   </body>
 </html>
