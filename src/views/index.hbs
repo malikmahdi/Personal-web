@@ -180,7 +180,7 @@
                 <div class="card-body">
                   <h5 class="card-title fw-bold">
                     <a
-                      href="/project-detail"
+                      href="/project-detaill/{{@index}}"
                       target="_blank"
                       class="text-dark text-decoration-none"
                     >{{this.tittle}}</a>
@@ -209,15 +209,12 @@
                       href="/delete/{{@index}}"
                       class="btn btn-dark p-0 w-50"
                     >Delete</a>
-                    {{!-- <a class="btn btn-secondary" href="/edit-blog/{{@index}}">Edit post</a>
-                        <a class="btn btn-primary" href="/delete/{{@index}}">Delete</a> --}}
                   </div>
                 </div>
               </div>
               <!-- Close Card -->
             </div>
           {{/each}}
-          <!-- Data added with Javascript / Dynamis -->
         </div>
         <!-- Close Row -->
       </div>
@@ -228,6 +225,5 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    {{! <script src="../assets/js/checkbox.js"></script> }}
   </body>
 </html>

@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.set("view engine", "hbs");
 app.set("views", "src/views");
 
 app.use("/assets", express.static("src/assets"));
 app.use(express.urlencoded({ extended: false }));
-//
+
 app.get("/home", home);
 
 app.get("/project", project);
@@ -18,7 +18,7 @@ app.get("/delete/:id", delProject);
 app.get("/reproject/:id", editProjectView);
 app.post("/reproject", editProject);
 
-app.get("/project-detail", projectDetail);
+app.get("/project-detaill/:id", projectDetail);
 
 app.get("/testimonial", testimonial);
 
@@ -94,8 +94,7 @@ function addProject(req, res) {
     author: "Malik Mahdi",
   };
   data.unshift(proj);
-  console.log(`Data project `, data);
-  res.redirect("home");
+  res.redirect("home#resultProject");
 }
 
 function delProject(req, res) {
@@ -110,7 +109,6 @@ function editProjectView(req, res) {
 
   const dataFilter = data[parseInt(id)];
   dataFilter.id = parseInt(id);
-  console.log(`data filter`, dataFilter);
   res.render("edit-project", { data: dataFilter });
 }
 
@@ -157,7 +155,7 @@ function editProject(req, res) {
   } else if (days > 0) {
     timeProject = `${days} Hari`;
   } else {
-    timeProject = `${week} Minggu`;
+    timeProject = `${week} `;
   }
 
   data[parseInt(id)] = {
@@ -171,11 +169,12 @@ function editProject(req, res) {
     id,
   };
 
-  res.redirect("/home");
+  res.redirect("/home#resultProject");
 }
 
 function projectDetail(req, res) {
-  res.render("project-detail");
+  const tittleTab = "Detail Project";
+  res.render("project-detaill", { data, tittleTab });
 }
 
 function testimonial(req, res) {

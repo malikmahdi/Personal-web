@@ -2,155 +2,26 @@ body {
   background-color: #e3e7eb !important;
 }
 
-/* Style Navbar */
-.navbar-brand img {
-  width: 70px !important;
-}
-
-.btn-contact-me {
-  background-color: orangered !important;
-}
-.btn-contact-me:hover {
-  background-color: rgb(216, 58, 0) !important;
-}
-/* Close Style Navbar */
-
-.container {
-  margin: 40px 60px;
-}
-
-.tittle-section h1 {
-  text-align: center;
-  font-size: 37px;
-}
-
-.row {
-  display: flex;
-  margin-top: 70px;
-  height: 400px;
-}
-
-.row .col-1 {
-  width: 65%;
-  margin-right: 40px;
-}
-
-.row .col-1 img {
+/* Styling Content Project */
+.col-img img {
   width: 100%;
-  height: 100%;
+  height: 350px;
+}
+.col-info img {
+  width: 35px;
+  height: 35px;
 }
 
-.row .col-2 {
-  width: 35%;
-}
-
-.col-2 h4 {
-  font-size: 25px;
-  font-weight: 500;
-}
-
-/* Styling duration */
-.col-duration .calcu-group {
-  display: flex;
-  margin-top: 20px;
-  align-items: center;
-  gap: 8px;
-}
-
-.col-duration img {
-  width: 33px;
-}
-
-.col-duration p {
-  color: grey;
-}
-
-.col-duration .clock-group {
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-/* Close Styling duration */
-
-/* Styling col tech */
-.col-tech {
-  margin-top: 40px;
-}
-
-.row-col-tech {
-  display: flex;
+.icon-tech {
   letter-spacing: 8px;
-  margin-top: 20px;
 }
 
-.row-col-tech small {
-  font-size: 16px;
-}
-.row-col-tech i {
-  font-size: 36px;
+.icon-tech i {
+  font-size: 35px;
 }
 
-.col-tech-1 {
-  width: 50%;
-  letter-spacing: 10px;
-}
-/* .react-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.node-group {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.col-tech-2 {
-  width: 50%;
-}
-.vue-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.js-group {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-} */
-/* Close Styling col tech */
-
-/* Styling artikel */
-.section-artikel {
-  padding: 8px 0px;
-}
-
-.artikel {
+.paraf {
+  font-size: 17px;
   text-align: justify;
 }
-/* Close Styling artikel */
-
-/* Media Queries */
-@media only screen and (max-width: 600px) {
-  .container {
-    margin: 40px 20px;
-  }
-
-  .row {
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-  }
-  .row .col-1 {
-    width: 100%;
-    /* margin-right: 40px; */
-  }
-  .row .col-2 {
-    margin-top: 30px;
-    width: 100%;
-  }
-}
-/* Close Media Queries */
+/* Close Styling Content Project */
