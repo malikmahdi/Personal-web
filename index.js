@@ -11,6 +11,7 @@ app.set("views", "src/views");
 app.use("/assets", express.static("src/assets"));
 app.use(express.urlencoded({ extended: false }));
 
+// Routing
 app.get("/home", home);
 
 app.get("/project", project);
@@ -21,15 +22,15 @@ app.get("/delete/:id", delProject);
 app.get("/reproject/:id", editProjectView);
 app.post("/reproject", editProject);
 
-app.get("/project-detaill/:id", projectDetail);
+app.get("/project-detail/:id", projectDetail);
 
 app.get("/testimonial", testimonial);
 
 app.get("/dataTestimonial", dataTesti);
 
 app.get("/contact-me", contact);
+//  /routing
 
-const data = [];
 const query = "SELECT * FROM projects";
 
 async function home(req, res) {
@@ -187,7 +188,7 @@ async function projectDetail(req, res) {
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
   // const datadet = objProjects[id];
   console.log("ini data detail", objProjects[id]);
-  res.render("project-detaill", { tittleTab, dataDetail: objProjects[id] });
+  res.render("project-detail", { tittleTab, dataDetail: objProjects[id] });
 }
 
 function testimonial(req, res) {

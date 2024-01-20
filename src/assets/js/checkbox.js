@@ -1,9 +1,0 @@
-const selectedTechs = "{{data.tech}}";
-const reactBox = document.getElementById("inputReact");
-const vueBox = document.getElementById("inputVue");
-const nodeBox = document.getElementById("inputNode");
-const jsBox = document.getElementById("inputJs");
-reactBox.checked = selectedTechs.includes("fa-react");
-vueBox.checked = selectedTechs.includes("fa-vuej");
-nodeBox.checked = selectedTechs.includes("fa-node-js");
-jsBox.checked = selectedTechs.includes("fa-square-js");
