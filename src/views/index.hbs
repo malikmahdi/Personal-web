@@ -172,7 +172,7 @@
               <!-- Card -->
               <div class="card border-0 shadow">
                 <img
-                  src="../assets/img/laptop.jpg"
+                  src="../assets/img/{{this.image}}"
                   class="card-img-top"
                   height="300"
                   alt="..."
@@ -187,16 +187,16 @@
                   </h5>
                   <small class="text-secondary">
                     <i class="fa-regular fa-clock"></i>
-                    {{this.timeProject}}
+                    {{this.start_date}}
                     |
                     <i class="fa-regular fa-user"></i>
                     {{this.author}}
                   </small>
                   <p class="text-paraf mt-2">
-                    {{this.desc}}
+                    {{this.description}}
                   </p>
                   <div class="ikon-tech mt-4 mb-4">
-                    {{#each this.tech}}
+                    {{#each this.technologies}}
                       <i class="fa-brands {{this}} fa-2xl"></i>
                     {{/each}}
                   </div>

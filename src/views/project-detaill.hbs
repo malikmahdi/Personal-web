@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Personal Web | Detail Project</title>
+    <title>Personal Web | {{tittleTab}}</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/fav-mylogo.png" />
 
     <link rel="stylesheet" href="../assets/css/project-detail.css" />
@@ -83,7 +83,7 @@
         <!-- Col image -->
         <div class="col-lg-7 col-sm-12 mt-5 col-img pe-4">
           <img
-            src="../assets/img/laptop.jpg"
+            src="../assets/img/{{dataDetail.image}}"
             class="img-fluid"
             id="image"
             alt=""
@@ -100,9 +100,9 @@
             <div class="calcu-group d-flex align-items-center">
               <img src="../assets/img/calculator.png" class="me-2" alt="" />
               <p class="mt-3 text-secondary" id="thisTime">
-                {{dataDetail.startDate}}
+                {{dataDetail.start_date}}
                 |
-                {{dataDetail.endDate}}
+                {{dataDetail.end_date}}
               </p>
             </div>
             <!-- Close Calcu Group -->
@@ -124,7 +124,7 @@
             <h4 class="fs-2">Technologies</h4>
 
             <div class="icon-tech d-flex mt-3">
-              {{#each dataDetail.tech}}
+              {{#each dataDetail.technologies}}
                 <div class="d-flex mt-4">
                   <i class="fa-brands {{this}} fa-2xl"></i>
                 </div>
@@ -139,7 +139,7 @@
 
       <div class="paraf-content mt-5">
         <p class="paraf" id="desc">
-          {{dataDetail.desc}}
+          {{dataDetail.description}}
         </p>
       </div>
     </section>

@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = 3000;
+const config = require("./src/config/config.json");
+const { Sequelize, QueryTypes } = require("sequelize");
+const sequelize = new Sequelize(config.development);
 
 app.set("view engine", "hbs");
 app.set("views", "src/views");
@@ -27,10 +30,15 @@ app.get("/dataTestimonial", dataTesti);
 app.get("/contact-me", contact);
 
 const data = [];
+const query = "SELECT * FROM projects";
 
-function home(req, res) {
+async function home(req, res) {
   const tittleTab = "Home";
-  res.render("index", { data, tittleTab });
+  const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
+
+  console.log("ini data table projects", objProjects);
+
+  res.render("index", { tittleTab, data: objProjects });
 }
 
 function project(req, res) {
@@ -172,14 +180,14 @@ function editProject(req, res) {
   res.redirect("/home#resultProject");
 }
 
-function projectDetail(req, res) {
+async function projectDetail(req, res) {
   const { id } = req.params;
   const tittleTab = "Detail Project";
-  const dataDetail = data[parseInt(id)];
 
-  dataDetail.id = parseInt(id);
-
-  res.render("project-detaill", { dataDetail, tittleTab });
+  const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
+  // const datadet = objProjects[id];
+  console.log("ini data detail", objProjects[id]);
+  res.render("project-detaill", { tittleTab, dataDetail: objProjects[id] });
 }
 
 function testimonial(req, res) {
