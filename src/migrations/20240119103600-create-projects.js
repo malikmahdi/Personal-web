@@ -30,6 +30,9 @@ module.exports = {
       technologies: {
         type: Sequelize.ARRAY(DataTypes.STRING),
       },
+      diff_date: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE,

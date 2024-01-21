@@ -52,7 +52,7 @@ function project(req, res) {
   const tittleTab = "Add Project";
   res.render("project", { tittleTab });
 }
-// Add belum selesai bagian timeprojectnya ga tampil
+
 async function addProject(req, res) {
   let { tittle, startDate, endDate, desc, tech } = req.body;
   const author = "Malik Mahdi";
@@ -64,7 +64,6 @@ async function addProject(req, res) {
   let days = diffDate / (1000 * 60 * 60 * 24);
 
   let week = Math.floor(days / 7);
-  // let weekDays = days % 7;
 
   let month = Math.floor(days / 30);
   let monthDays = days % 30;
@@ -72,32 +71,31 @@ async function addProject(req, res) {
   let years = Math.floor(days / 365);
   let yearsDays = days % 365;
 
-  let timeProject = "";
+  let time_project = "";
 
   if (days <= 6) {
-    timeProject = `${days} hari`;
+    time_project = `${days} hari`;
   } else if (years > 0) {
     if (yearsDays > 0) {
-      timeProject = `${years} Tahun ${Math.floor(
+      time_project = `${years} Tahun ${Math.floor(
         yearsDays / 30
       )} Bulan ${Math.floor(yearsDays % 30)} Hari`;
     } else {
-      timeProject = `${years} Tahun`;
+      time_project = `${years} Tahun`;
     }
   } else if (month > 0) {
     if (monthDays > 0) {
-      timeProject = `${month} Bulan ${monthDays} Hari`;
+      time_project = `${month} Bulan ${monthDays} Hari`;
     } else {
-      timeProject = `${month} Bulan `;
+      time_project = `${month} Bulan `;
     }
   } else if (days > 0) {
-    timeProject = `${days} Hari`;
+    time_project = `${days} Hari`;
   } else {
-    timeProject = `${week} Minggu`;
+    time_project = `${week} Minggu`;
   }
 
-  console.log("ini tanggal", timeProject);
-  const query = `INSERT INTO projects (tittle, start_date, end_date, description, technologies,author) VALUES ('${tittle}','${startDate}','${endDate}', '${desc}','{${tech}}','${author}')`;
+  const query = `INSERT INTO projects (tittle, start_date, end_date, description, technologies,author,diff_date) VALUES ('${tittle}','${startDate}','${endDate}', '${desc}','{${tech}}','${author}','${time_project}')`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.INSERT });
 
   res.redirect("home#resultProject");
@@ -124,7 +122,45 @@ async function editProjectView(req, res) {
 async function editProject(req, res) {
   let { tittle, startDate, endDate, desc, tech, id } = req.body;
 
-  const query = `UPDATE projects SET tittle='${tittle}', start_date='${startDate}', end_date='${endDate}', description='${desc}', technologies='{${tech}}' WHERE id=${id}`;
+  let startGet = new Date(startDate);
+  let endGet = new Date(endDate);
+
+  let diffDate = endGet.getTime() - startGet.getTime();
+  let days = diffDate / (1000 * 60 * 60 * 24);
+
+  let week = Math.floor(days / 7);
+
+  let month = Math.floor(days / 30);
+  let monthDays = days % 30;
+
+  let years = Math.floor(days / 365);
+  let yearsDays = days % 365;
+
+  let time_project = "";
+
+  if (days <= 6) {
+    time_project = `${days} hari`;
+  } else if (years > 0) {
+    if (yearsDays > 0) {
+      time_project = `${years} Tahun ${Math.floor(
+        yearsDays / 30
+      )} Bulan ${Math.floor(yearsDays % 30)} Hari`;
+    } else {
+      time_project = `${years} Tahun`;
+    }
+  } else if (month > 0) {
+    if (monthDays > 0) {
+      time_project = `${month} Bulan ${monthDays} Hari`;
+    } else {
+      time_project = `${month} Bulan `;
+    }
+  } else if (days > 0) {
+    time_project = `${days} Hari`;
+  } else {
+    time_project = `${week} Minggu`;
+  }
+
+  const query = `UPDATE projects SET tittle='${tittle}', start_date='${startDate}', end_date='${endDate}', description='${desc}', technologies='{${tech}}',diff_date='${time_project}' WHERE id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.UPDATE });
 
   res.redirect("/home#resultProject");
