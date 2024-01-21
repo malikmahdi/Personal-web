@@ -28,16 +28,22 @@ app.get("/testimonial", testimonial);
 
 app.get("/dataTestimonial", dataTesti);
 
-app.get("/contact-me", contact);
-//  /routing
+app.get("/register", (req, res) => {
+  res.render("register");
+});
 
-const query = "SELECT * FROM projects";
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.get("/contact-me", contact);
+// routing
 
 async function home(req, res) {
   const tittleTab = "Home";
-  const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
 
-  console.log("ini data table projects", objProjects);
+  const query = "SELECT * FROM projects";
+  const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
 
   res.render("index", { tittleTab, data: objProjects });
 }
@@ -46,9 +52,10 @@ function project(req, res) {
   const tittleTab = "Add Project";
   res.render("project", { tittleTab });
 }
-
-function addProject(req, res) {
+// Add belum selesai bagian timeprojectnya ga tampil
+async function addProject(req, res) {
   let { tittle, startDate, endDate, desc, tech } = req.body;
+  const author = "Malik Mahdi";
 
   let startGet = new Date(startDate);
   let endGet = new Date(endDate);
@@ -66,10 +73,6 @@ function addProject(req, res) {
   let yearsDays = days % 365;
 
   let timeProject = "";
-
-  if (diffDate < 0) {
-    return alert("End Date harus setelah Start Date!");
-  }
 
   if (days <= 6) {
     timeProject = `${days} hari`;
@@ -93,102 +96,48 @@ function addProject(req, res) {
     timeProject = `${week} Minggu`;
   }
 
-  const proj = {
-    tittle,
-    startDate,
-    endDate,
-    timeProject,
-    desc,
-    tech: Array.isArray(tech) ? tech : [tech],
-    author: "Malik Mahdi",
-  };
-  data.unshift(proj);
+  console.log("ini tanggal", timeProject);
+  const query = `INSERT INTO projects (tittle, start_date, end_date, description, technologies,author) VALUES ('${tittle}','${startDate}','${endDate}', '${desc}','{${tech}}','${author}')`;
+  const objProjects = await sequelize.query(query, { type: QueryTypes.INSERT });
+
   res.redirect("home#resultProject");
 }
 
-function delProject(req, res) {
+async function delProject(req, res) {
   const { id } = req.params;
 
-  data.splice(id, 1);
+  const query = `DELETE FROM projects WHERE id= ${id}`;
+  const objProjects = await sequelize.query(query, { type: QueryTypes.DELETE });
+
   res.redirect("/home#resultProject");
 }
 
-function editProjectView(req, res) {
+async function editProjectView(req, res) {
   const { id } = req.params;
 
-  const dataFilter = data[parseInt(id)];
-  dataFilter.id = parseInt(id);
-  res.render("edit-project", { data: dataFilter });
+  const query = `SELECT * FROM projects WHERE id=${id}`;
+  const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
+
+  res.render("edit-project", { data: objProjects[0] });
 }
 
-function editProject(req, res) {
+async function editProject(req, res) {
   let { tittle, startDate, endDate, desc, tech, id } = req.body;
 
-  let startGet = new Date(startDate);
-  let endGet = new Date(endDate);
-
-  let diffDate = endGet.getTime() - startGet.getTime();
-  let days = diffDate / (1000 * 60 * 60 * 24);
-
-  let week = Math.floor(days / 7);
-  // let weekDays = days % 7;
-
-  let month = Math.floor(days / 30);
-  let monthDays = days % 30;
-
-  let years = Math.floor(days / 365);
-  let yearsDays = days % 365;
-
-  let timeProject = "";
-
-  if (diffDate < 0) {
-    return alert("End Date harus setelah Start Date!");
-  }
-
-  if (days <= 6) {
-    timeProject = `${days} hari`;
-  } else if (years > 0) {
-    if (yearsDays > 0) {
-      timeProject = `${years} Tahun ${Math.floor(
-        yearsDays / 30
-      )} Bulan ${Math.floor(yearsDays % 30)} Hari`;
-    } else {
-      timeProject = `${years} Tahun`;
-    }
-  } else if (month > 0) {
-    if (monthDays > 0) {
-      timeProject = `${month} Bulan ${monthDays} Hari`;
-    } else {
-      timeProject = `${month} Bulan `;
-    }
-  } else if (days > 0) {
-    timeProject = `${days} Hari`;
-  } else {
-    timeProject = `${week} `;
-  }
-
-  data[parseInt(id)] = {
-    tittle,
-    startDate,
-    endDate,
-    timeProject,
-    desc,
-    tech: Array.isArray(tech) ? tech : [tech],
-    author: "Malik Mahdi",
-    id,
-  };
+  const query = `UPDATE projects SET tittle='${tittle}', start_date='${startDate}', end_date='${endDate}', description='${desc}', technologies='{${tech}}' WHERE id=${id}`;
+  const objProjects = await sequelize.query(query, { type: QueryTypes.UPDATE });
 
   res.redirect("/home#resultProject");
 }
-
+// baru iconnya saja, belum ada nama dari setiap iconnya
 async function projectDetail(req, res) {
   const { id } = req.params;
   const tittleTab = "Detail Project";
 
+  const query = `SELECT * FROM projects WHERE id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
-  // const datadet = objProjects[id];
-  console.log("ini data detail", objProjects[id]);
-  res.render("project-detail", { tittleTab, dataDetail: objProjects[id] });
+
+  res.render("project-detail", { tittleTab, dataDetail: objProjects[0] });
 }
 
 function testimonial(req, res) {

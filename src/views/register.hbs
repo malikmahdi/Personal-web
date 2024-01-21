@@ -1,0 +1,149 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personal Web | {{tittleTab}}</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/fav-mylogo.png" />
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/nav.css" />
+    <!-- Cdn Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Cdn Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Cdn Animate css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar bg-nav navbar-expand-lg px-lg-5 px-sm-4 py-4">
+      <div class="container-fluid">
+        <a class="navbar-brand nav-logo me-5" href="#"><img
+            src="../assets/img/mylogo.png"
+            alt=""
+          /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item me-4">
+              <a class="nav-link" aria-current="page" href="/home">Home</a>
+            </li>
+            <li class="nav-item me-4">
+              <a class="nav-link text-dark" href="/project">Add Project</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="/testimonial">Testimonials</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+              <li class="nav-item me-4">
+                <a class="nav-link nav-active fw-bold" href="#">Register</a>
+              </li>
+              <li class="nav-item me-4">
+                <a class="nav-link text-dark" href="/login">Login</a>
+              </li>
+            </ul>
+            <a
+              href="/contact-me"
+              class="btn btn-contact-me bg-primary text-light w-100"
+              type="submit"
+            >
+              Contact Me</a>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Form Content -->
+    <div class="me-3 ms-3 pb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 mt-5">
+          <h1 class="fw-bold text-center mt-5 mb-5 fs-3">REGISTER YOUR ACCOUNT</h1>
+
+          <!-- Form -->
+          <form>
+            <!-- Input Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label fw-medium">Name</label>
+              <input
+                type="text"
+                class="form-control shadow"
+                id="name"
+                aria-describedby="emailHelp"
+                placeholder=""
+              />
+            </div>
+
+            <!-- Input Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label fw-medium">Email</label>
+              <input
+                type="text"
+                class="form-control shadow"
+                id="email"
+                placeholder=""
+              />
+            </div>
+
+            <!-- Input Phone -->
+            <div class="mb-3">
+              <label
+                for="password"
+                class="form-label fw-medium"
+              >Password</label>
+              <input
+                type="password"
+                class="form-control shadow"
+                id="password"
+                placeholder=""
+              />
+            </div>
+
+            <!-- Input Button Submit -->
+            <div class="d-flex justify-content-end container-btn mt-5 pt-2">
+              <input
+                type="submit"
+                value="Submit"
+                class="btn btn-submit bg-dark text-light rounded-5 pe-4 ps-4"
+                onclick="submited(event)"
+              />
+            </div>
+          </form>
+          <!-- Close Form -->
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

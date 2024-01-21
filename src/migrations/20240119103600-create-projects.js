@@ -30,9 +30,6 @@ module.exports = {
       technologies: {
         type: Sequelize.ARRAY(DataTypes.STRING),
       },
-      image: {
-        type: Sequelize.STRING,
-      },
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE,

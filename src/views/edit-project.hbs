@@ -101,7 +101,7 @@
                   class="form-control shadow"
                   id="inputStartDate"
                   name="startDate"
-                  value="{{data.startDate}}"
+                  value="{{data.start_date}}"
                 />
               </div>
 
@@ -112,7 +112,7 @@
                   class="form-control shadow"
                   id="inputEndDate"
                   name="endDate"
-                  value="{{data.endDate}}"
+                  value="{{data.end_date}}"
                 />
               </div>
             </div>
@@ -129,12 +129,13 @@
                 id="description"
                 name="desc"
                 rows="8"
-              >{{data.desc}}</textarea>
+              >{{data.description}}</textarea>
             </div>
 
             <!-- Input Checbox Technologies -->
             <div class="mb-3">
               <label for="" class="form-label fw-medium">Technologies</label>
+              {{! Row 1 }}
               <div class="row">
                 <div class="col-lg-6 col-sm-6">
                   <div class="mb-3 form-check d-flex align-items-center">
@@ -167,7 +168,9 @@
                   </div>
                 </div>
               </div>
+              {{! row 1 }}
 
+              {{! Row 2 }}
               <div class="row">
                 <div class="col-lg-6 col-sm-6">
                   <div class="mb-3 form-check d-flex align-items-center">
@@ -200,6 +203,7 @@
                   </div>
                 </div>
               </div>
+              {{! row 2 }}
             </div>
 
             <div class="content-upload">
@@ -243,7 +247,7 @@
     ></script>
 
     <script>
-      const selectedTechs = "{{data.tech}}"; const reactBox =
+      const selectedTechs = "{{data.technologies}}"; const reactBox =
       document.getElementById("inputReact"); const vueBox =
       document.getElementById("inputVue"); const nodeBox =
       document.getElementById("inputNode"); const jsBox =

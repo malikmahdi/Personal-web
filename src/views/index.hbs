@@ -23,6 +23,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Cdn Animate css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body>
     <nav class="navbar bg-nav navbar-expand-lg px-lg-5 px-sm-4 py-4">
@@ -70,7 +75,9 @@
       </div>
     </nav>
 
-    <div class="container bg-container rounded-4 shadow">
+    <div
+      class="container bg-container rounded-4 shadow animate__animated animate__slideInUp"
+    >
       <div class="row mt-5 mb-5">
         <div class="col-lg-7 mt-5 pt-lg-5 ps-lg-5 p-sm-4">
           <h1 class="fw-bold fs-2">Welcome to My Personal Website</h1>
@@ -142,7 +149,7 @@
         </div>
 
         <div class="col-lg-5 mt-3 mb-3 p-lg-5 p-sm-4 pb-sm-5 m-auto">
-          <div class="card shadow-lg border-0">
+          <div class="card shadow-lg border-0 shadow">
             <img
               src="../assets/img/myphoto.jpg"
               class="card-img-top"
@@ -160,19 +167,19 @@
     <section class="content-result-project bg-light pt-5 pb-5" id="sec-project">
       <div class="container mt-5">
         <h3 class="text-center fw-bold pb-5">MY PROJECT</h3>
-        <div class="text-end mt-3 mb-5"><a
-            href="/project"
-            class="btn bg-danger text-light"
-          ><i class="fa-solid fa-plus"></i>
+        <div class="text-end mt-3 mb-5">
+          <a href="/project" class="btn text-light btn-add-proj"><i
+              class="fa-solid fa-plus"
+            ></i>
             Project</a></div>
         <!-- Row -->
         <div class="row" id="resultProject">
           {{#each data}}
             <div class="col-lg-4 mt-4">
               <!-- Card -->
-              <div class="card border-0 shadow">
+              <div class="card shadow">
                 <img
-                  src="../assets/img/{{this.image}}"
+                  src="../assets/img/laptop.jpg"
                   class="card-img-top"
                   height="300"
                   alt="..."
@@ -180,14 +187,14 @@
                 <div class="card-body">
                   <h5 class="card-title fw-bold">
                     <a
-                      href="/project-detail/{{@index}}"
+                      href="/project-detail/{{this.id}}"
                       target="_blank"
                       class="text-dark text-decoration-none"
                     >{{this.tittle}}</a>
                   </h5>
                   <small class="text-secondary">
                     <i class="fa-regular fa-clock"></i>
-                    {{this.start_date}}
+                    {{this.timeProject}}
                     |
                     <i class="fa-regular fa-user"></i>
                     {{this.author}}
@@ -202,11 +209,11 @@
                   </div>
                   <div class="btn-bottom d-flex justify-content-center mb-2">
                     <a
-                      href="/reproject/{{@index}}"
+                      href="/reproject/{{this.id}}"
                       class="btn btn-dark me-1 p-0 w-50"
                     >Edit</a>
                     <a
-                      href="/delete/{{@index}}"
+                      href="/delete/{{this.id}}"
                       class="btn btn-dark p-0 w-50"
                     >Delete</a>
                   </div>
