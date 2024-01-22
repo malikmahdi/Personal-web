@@ -1,3 +1,4 @@
+//
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -39,6 +40,7 @@ app.get("/login", (req, res) => {
 app.get("/contact-me", contact);
 // routing
 
+// Function
 async function home(req, res) {
   const tittleTab = "Home";
 
@@ -91,11 +93,9 @@ async function addProject(req, res) {
     }
   } else if (days > 0) {
     time_project = `${days} Hari`;
-  } else {
-    time_project = `${week} Minggu`;
   }
 
-  const query = `INSERT INTO projects (tittle, start_date, end_date, description, technologies,author,diff_date) VALUES ('${tittle}','${startDate}','${endDate}', '${desc}','{${tech}}','${author}','${time_project}')`;
+  const query = `INSERT INTO projects (tittle, start_date, end_date, description, technologies,author,distance_date, "createdAt", "updatedAt") VALUES ('${tittle}', '${startDate}' , '${endDate}' , $$${desc}$$,'{${tech}}','${author}','${time_project}', NOW(), NOW())`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.INSERT });
 
   res.redirect("home#resultProject");
@@ -116,7 +116,7 @@ async function editProjectView(req, res) {
   const query = `SELECT * FROM projects WHERE id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
 
-  res.render("edit-project", { data: objProjects[0] });
+  res.render("update-project", { data: objProjects[0] });
 }
 
 async function editProject(req, res) {
@@ -156,24 +156,53 @@ async function editProject(req, res) {
     }
   } else if (days > 0) {
     time_project = `${days} Hari`;
-  } else {
-    time_project = `${week} Minggu`;
   }
 
-  const query = `UPDATE projects SET tittle='${tittle}', start_date='${startDate}', end_date='${endDate}', description='${desc}', technologies='{${tech}}',diff_date='${time_project}' WHERE id=${id}`;
+  const query = `UPDATE projects SET tittle='${tittle}', start_date='${startDate}', end_date='${endDate}', description=$$${desc}$$, technologies='{${tech}}',distance_date='${time_project}' WHERE id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.UPDATE });
-
+  console.log("ini data edit", objProjects);
   res.redirect("/home#resultProject");
 }
-// baru iconnya saja, belum ada nama dari setiap iconnya
+
 async function projectDetail(req, res) {
   const { id } = req.params;
   const tittleTab = "Detail Project";
 
   const query = `SELECT * FROM projects WHERE id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
+  const monthList = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec ",
+  ];
+  let tanggalAwal = new Date(objProjects[0].start_date);
+  const dateStart = tanggalAwal.getDate();
+  const monthStart = tanggalAwal.getMonth();
+  const yearStart = tanggalAwal.getFullYear();
 
-  res.render("project-detail", { tittleTab, dataDetail: objProjects[0] });
+  let tanggalAkhir = new Date(objProjects[0].end_date);
+  const dateEnd = tanggalAkhir.getDate();
+  const monthEnd = tanggalAkhir.getMonth();
+  const yearEnd = tanggalAkhir.getFullYear();
+
+  const fullStartDate = `${dateStart} ${monthList[monthStart]} ${yearStart}`;
+  const fullEndDate = `${dateEnd} ${monthList[monthEnd]} ${yearEnd}`;
+
+  res.render("project-detail", {
+    tittleTab,
+    dataDetail: objProjects[0],
+    fullStartDate,
+    fullEndDate,
+  });
 }
 
 function testimonial(req, res) {
@@ -220,6 +249,7 @@ function dataTesti(req, res) {
     },
   ]);
 }
+// function
 
 app.listen(port, () => {
   console.log(`Server berjalan di port ${port}`);

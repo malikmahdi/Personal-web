@@ -177,7 +177,7 @@
           {{#each data}}
             <div class="col-lg-4 mt-4">
               <!-- Card -->
-              <div class="card shadow">
+              <div class="card card-proj border-0 shadow">
                 <img
                   src="../assets/img/laptop.jpg"
                   class="card-img-top"
@@ -194,7 +194,7 @@
                   </h5>
                   <small class="text-secondary">
                     <i class="fa-regular fa-clock"></i>
-                    {{this.diff_date}}
+                    {{this.distance_date}}
                     |
                     <i class="fa-regular fa-user"></i>
                     {{this.author}}
@@ -204,7 +204,7 @@
                   </p>
                   <div class="ikon-tech mt-4 mb-4">
                     {{#each this.technologies}}
-                      <i class="fa-brands {{this}} fa-2xl"></i>
+                      <i class="fa-brands fa-{{this}} fa-2xl"></i>
                     {{/each}}
                   </div>
                   <div class="btn-bottom d-flex justify-content-center mb-2">

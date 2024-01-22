@@ -38,8 +38,14 @@ body {
   letter-spacing: 2px;
 }
 
-.card:hover {
-  border: 1px solid rgb(177, 177, 177) !important;
+.card-proj {
+  transition: transform 0.2s;
+}
+
+.card-proj:hover {
+  -ms-transform: scale(1.04);
+  -webkit-transform: scale(1.04);
+  transform: scale(1.04);
 }
 
 .btn-add-proj {

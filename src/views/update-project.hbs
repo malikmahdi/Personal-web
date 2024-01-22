@@ -144,7 +144,7 @@
                       class="form-check-input shadow"
                       id="inputReact"
                       name="tech"
-                      value="fa-react"
+                      value="react"
                     />
                     <label
                       class="form-check-label text-secondary ms-2"
@@ -157,14 +157,14 @@
                     <input
                       type="checkbox"
                       class="form-check-input shadow"
-                      id="inputVue"
+                      id="inputGolang"
                       name="tech"
-                      value="fa-vuejs"
+                      value="golang"
                     />
                     <label
                       class="form-check-label ms-2 text-secondary"
-                      for="inputVue"
-                    >Vue Js</label>
+                      for="inputGolang"
+                    >Golang</label>
                   </div>
                 </div>
               </div>
@@ -177,14 +177,14 @@
                     <input
                       type="checkbox"
                       class="form-check-input shadow"
-                      id="inputNode"
+                      id="inputBootstrap"
                       name="tech"
-                      value="fa-node-js"
+                      value="bootstrap"
                     />
                     <label
                       class="form-check-label ms-2 text-secondary"
-                      for="inputNode"
-                    >Node Js</label>
+                      for="inputBootstrap"
+                    >Bootstrap</label>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-6">
@@ -192,14 +192,14 @@
                     <input
                       type="checkbox"
                       class="form-check-input shadow"
-                      id="inputJs"
+                      id="inputJava"
                       name="tech"
-                      value="fa-square-js"
+                      value="java"
                     />
                     <label
                       class="form-check-label ms-2 text-secondary"
-                      for="inputJs"
-                    >Javacript</label>
+                      for="inputJava"
+                    >Java</label>
                   </div>
                 </div>
               </div>
@@ -249,13 +249,13 @@
     <script>
       const selectedTechs = "{{data.technologies}}"; const reactBox =
       document.getElementById("inputReact"); const vueBox =
-      document.getElementById("inputVue"); const nodeBox =
-      document.getElementById("inputNode"); const jsBox =
-      document.getElementById("inputJs"); reactBox.checked =
-      selectedTechs.includes("fa-react"); vueBox.checked =
-      selectedTechs.includes("fa-vuej"); nodeBox.checked =
-      selectedTechs.includes("fa-node-js"); jsBox.checked =
-      selectedTechs.includes("fa-square-js");
+      document.getElementById("inputGolang"); const nodeBox =
+      document.getElementById("inputBootstrap"); const jsBox =
+      document.getElementById("inputJava"); reactBox.checked =
+      selectedTechs.includes("react"); vueBox.checked =
+      selectedTechs.includes("golang"); nodeBox.checked =
+      selectedTechs.includes("bootstrap"); jsBox.checked =
+      selectedTechs.includes("java");
 
     </script>
   </body>
