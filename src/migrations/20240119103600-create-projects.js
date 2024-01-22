@@ -21,6 +21,9 @@ module.exports = {
       end_date: {
         type: Sequelize.DATE,
       },
+      distance_date: {
+        type: Sequelize.STRING,
+      },
       author: {
         type: Sequelize.STRING,
       },
@@ -34,11 +37,11 @@ module.exports = {
         type: Sequelize.STRING,
       },
       createdAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE,
       },
     });

@@ -187,7 +187,7 @@
                   </h5>
                   <small class="text-secondary">
                     <i class="fa-regular fa-clock"></i>
-                    {{this.start_date}}
+                    {{this.distance_date}}
                     |
                     <i class="fa-regular fa-user"></i>
                     {{this.author}}
@@ -197,16 +197,16 @@
                   </p>
                   <div class="ikon-tech mt-4 mb-4">
                     {{#each this.technologies}}
-                      <i class="fa-brands {{this}} fa-2xl"></i>
+                      <i class="fa-brands fa-{{this}} fa-2xl"></i>
                     {{/each}}
                   </div>
                   <div class="btn-bottom d-flex justify-content-center mb-2">
                     <a
-                      href="/reproject/{{@index}}"
+                      href="#resultProject"
                       class="btn btn-dark me-1 p-0 w-50"
                     >Edit</a>
                     <a
-                      href="/delete/{{@index}}"
+                      href="#resutProject"
                       class="btn btn-dark p-0 w-50"
                     >Delete</a>
                   </div>

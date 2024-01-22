@@ -31,10 +31,10 @@ app.get("/dataTestimonial", dataTesti);
 app.get("/contact-me", contact);
 //  /routing
 
-const query = "SELECT * FROM projects";
-
 async function home(req, res) {
   const tittleTab = "Home";
+
+  const query = "SELECT * FROM projects";
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
 
   console.log("ini data table projects", objProjects);
@@ -184,11 +184,41 @@ function editProject(req, res) {
 async function projectDetail(req, res) {
   const { id } = req.params;
   const tittleTab = "Detail Project";
-
+  const query = "SELECT * FROM projects";
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
-  // const datadet = objProjects[id];
-  console.log("ini data detail", objProjects[id]);
-  res.render("project-detail", { tittleTab, dataDetail: objProjects[id] });
+  const monthList = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec ",
+  ];
+  let tanggalAwal = new Date(objProjects[id].start_date);
+  const dateStart = tanggalAwal.getDate();
+  const monthStart = tanggalAwal.getMonth();
+  const yearStart = tanggalAwal.getFullYear();
+
+  let tanggalAkhir = new Date(objProjects[id].end_date);
+  const dateEnd = tanggalAkhir.getDate();
+  const monthEnd = tanggalAkhir.getMonth();
+  const yearEnd = tanggalAkhir.getFullYear();
+
+  const fullStartDate = `${dateStart} ${monthList[monthStart]} ${yearStart}`;
+  const fullEndDate = `${dateEnd} ${monthList[monthEnd]} ${yearEnd}`;
+
+  res.render("project-detail", {
+    tittleTab,
+    dataDetail: objProjects[id],
+    fullStartDate,
+    fullEndDate,
+  });
 }
 
 function testimonial(req, res) {
