@@ -51,26 +51,53 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item me-4">
               <a
-                class="nav-link nav-active fw-bold"
+                class="nav-link nav-active link-active fw-bold"
                 aria-current="page"
                 href="#"
               >Home</a>
             </li>
-            <li class="nav-item me-4">
-              <a class="nav-link text-dark" href="/project">Add Project</a>
-            </li>
+            {{#if isLogin}}
+              <li class="nav-item me-4">
+                <a class="nav-link text-dark" href="/project">Add Project</a>
+              </li>
+            {{/if}}
             <li class="nav-item">
               <a class="nav-link text-dark" href="/testimonial">Testimonials</a>
             </li>
           </ul>
           <form class="d-flex" role="">
-            <a
-              href="/contact-me"
-              class="btn btn-contact-me bg-primary text-light w-100"
-              type="submit"
-            >
-              Contact Me</a>
+            {{#if isLogin}}
+              <div class="mt-2 me-3"><h5 class="text-secondary"><i
+                    class="fa-solid fa-user"
+                  ></i>
+                  Hallo,
+                  {{user.name}}</h5>
+              </div>
+              <div class="logout-group mt-3 me-3"><a href="">
+                  <i
+                    title="Click here to Logout"
+                    class="fa-solid text-dark fa-right-from-bracket mt-1 fa-xl"
+                  ></i></a></div>
+            {{else}}
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item me-4">
+                  <a
+                    class="nav-link nav-active fw-bold"
+                    href="/register"
+                  >Register</a>
+                </li>
+                <li class="nav-item me-4">
+                  <a class="nav-link text-dark" href="/login">Login</a>
+                </li>
+              </ul>
+            {{/if}}
           </form>
+          <a
+            href="/contact-me"
+            class="btn btn-contact-me bg-primary text-light"
+            type="submit"
+          >
+            Contact Me</a>
         </div>
       </div>
     </nav>
@@ -167,11 +194,14 @@
     <section class="content-result-project bg-light pt-5 pb-5" id="sec-project">
       <div class="container mt-5">
         <h3 class="text-center fw-bold pb-5">MY PROJECT</h3>
-        <div class="text-end mt-3 mb-5">
-          <a href="/project" class="btn text-light btn-add-proj"><i
-              class="fa-solid fa-plus"
-            ></i>
-            Project</a></div>
+
+        {{#if isLogin}}
+          <div class="text-end mt-3 mb-5">
+            <a href="/project" class="btn text-light btn-add-proj"><i
+                class="fa-solid fa-plus"
+              ></i>
+              Project</a></div>{{/if}}
+
         <!-- Row -->
         <div class="row" id="resultProject">
           {{#each data}}
@@ -207,15 +237,17 @@
                       <i class="fa-brands fa-{{this}} fa-2xl"></i>
                     {{/each}}
                   </div>
-                  <div class="btn-bottom d-flex justify-content-center mb-2">
+                  <div class="btn-bottom d-flex justify-content-center">
                     <a
                       href="/reproject/{{this.id}}"
                       class="btn btn-dark me-1 p-0 w-50"
                     >Edit</a>
+
                     <a
                       href="/delete/{{this.id}}"
                       class="btn btn-dark p-0 w-50"
                     >Delete</a>
+
                   </div>
                 </div>
               </div>

@@ -2,15 +2,33 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+
 const config = require("./src/config/config.json");
 const { Sequelize, QueryTypes } = require("sequelize");
 const sequelize = new Sequelize(config.development);
 
+const bcrypt = require("bcrypt");
+const session = require("express-session");
+
 app.set("view engine", "hbs");
 app.set("views", "src/views");
 
+// Middleware
 app.use("/assets", express.static("src/assets"));
 app.use(express.urlencoded({ extended: false }));
+app.use(
+  session({
+    name: "data",
+    secret: "rahasia",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      maxAge: 1000 * 60 * 60 * 24,
+    },
+  })
+);
+// middleware
 
 // Routing
 app.get("/home", home);
@@ -26,16 +44,13 @@ app.post("/reproject", editProject);
 app.get("/project-detail/:id", projectDetail);
 
 app.get("/testimonial", testimonial);
-
 app.get("/dataTestimonial", dataTesti);
 
-app.get("/register", (req, res) => {
-  res.render("register");
-});
+app.get("/register", registerView);
+app.post("/register", register);
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
+app.get("/login", loginView);
+app.post("/login", login);
 
 app.get("/contact-me", contact);
 // routing
@@ -43,16 +58,26 @@ app.get("/contact-me", contact);
 // Function
 async function home(req, res) {
   const tittleTab = "Home";
-
   const query = "SELECT * FROM projects";
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
 
-  res.render("index", { tittleTab, data: objProjects });
+  res.render("index", {
+    tittleTab,
+    data: objProjects,
+    user: req.session.user,
+    isLogin,
+    user,
+  });
 }
 
 function project(req, res) {
   const tittleTab = "Add Project";
-  res.render("project", { tittleTab });
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
+
+  res.render("project", { tittleTab, isLogin, user });
 }
 
 async function addProject(req, res) {
@@ -207,12 +232,79 @@ async function projectDetail(req, res) {
 
 function testimonial(req, res) {
   const tittleTab = "Testimonials";
-  res.render("testimonial", { tittleTab });
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
+
+  res.render("testimonial", { tittleTab, isLogin, user });
+}
+
+function registerView(req, res) {
+  const tittleTab = "Register";
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
+
+  res.render("register", { tittleTab, isLogin, user });
+}
+
+async function register(req, res) {
+  const { name, email, password } = req.body;
+  const salt = 10;
+
+  bcrypt.hash(password, salt, async (err, hash) => {
+    if (err) {
+      return console.log("Password failed to be encrypted!");
+    }
+
+    const query = `INSERT INTO users (name,email,password,"createdAt", "updatedAt") VALUES ('${name}', '${email}','${hash}', NOW(),NOW())`;
+
+    const objUsers = await sequelize.query(query, { type: QueryTypes.INSERT });
+  });
+
+  res.redirect("/login");
+}
+
+function loginView(req, res) {
+  const tittleTab = "Login";
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
+
+  res.render("login", { tittleTab, isLogin, user });
+}
+
+async function login(req, res) {
+  const { email, password } = req.body;
+
+  const query = `SELECT * FROM users WHERE email='${email}'`;
+  const objUsers = await sequelize.query(query, { type: QueryTypes.SELECT });
+
+  if (!objUsers.length) {
+    console.log("User not registered!");
+    return res.redirect("/login");
+  }
+
+  bcrypt.compare(password, objUsers[0].password, (err, result) => {
+    if (!result) {
+      console.log("Password is wrong!");
+      return res.redirect("/login");
+    }
+    console.log("Login berhasil");
+
+    req.session.isLogin = true;
+    req.session.user = {
+      name: objUsers[0].name,
+      email: objUsers[0].email,
+    };
+
+    res.redirect("/home");
+  });
 }
 
 function contact(req, res) {
   const tittleTab = "Contact Me";
-  res.render("contact", { tittleTab });
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
+
+  res.render("contact", { tittleTab, isLogin, user });
 }
 
 function dataTesti(req, res) {
