@@ -2,6 +2,10 @@ body {
   background-color: #e3e7eb !important;
 }
 
+.logout-group i:hover {
+  color: rgb(226, 0, 0) !important;
+}
+
 .bg-container {
   background-color: #fff;
 }

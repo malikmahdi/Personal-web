@@ -30,6 +30,7 @@
     />
   </head>
   <body>
+    {{! Navbar }}
     <nav class="navbar bg-nav navbar-expand-lg px-lg-5 px-sm-4 py-4">
       <div class="container-fluid">
         <a class="navbar-brand nav-logo me-5" href="#"><img
@@ -67,24 +68,23 @@
           </ul>
           <form class="d-flex" role="">
             {{#if isLogin}}
-              <div class="mt-2 me-3"><h5 class="text-secondary"><i
-                    class="fa-solid fa-user"
-                  ></i>
-                  Hallo,
-                  {{user.name}}</h5>
+              <div class="d-flex align-items-center">
+                <div class="mt-2 me-3"><h5 class="text-secondary"><i
+                      class="fa-solid fa-user"
+                    ></i>
+                    Hallo,
+                    {{user.name}}</h5>
+                </div>
+                <div class="logout-group me-3"><a href="">
+                    <i
+                      title="Click here to Logout"
+                      class="fa-solid text-dark fa-right-from-bracket fa-xl"
+                    ></i></a></div>
               </div>
-              <div class="logout-group mt-3 me-3"><a href="">
-                  <i
-                    title="Click here to Logout"
-                    class="fa-solid text-dark fa-right-from-bracket mt-1 fa-xl"
-                  ></i></a></div>
             {{else}}
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item me-4">
-                  <a
-                    class="nav-link nav-active fw-bold"
-                    href="/register"
-                  >Register</a>
+                  <a class="nav-link text-dark" href="/register">Register</a>
                 </li>
                 <li class="nav-item me-4">
                   <a class="nav-link text-dark" href="/login">Login</a>
@@ -101,6 +101,33 @@
         </div>
       </div>
     </nav>
+    {{! navbar }}
+
+    {{! Alert }}
+    {{#if messages.loginOn}}
+      <div class="alert alert-success">
+        <div class="container">{{messages.loginOn}}</div>
+      </div>
+    {{/if}}
+
+    {{#if messages.addData}}
+      <div class="alert alert-success">
+        <div class="container">{{messages.addData}}</div>
+      </div>
+    {{/if}}
+
+    {{#if messages.updateData}}
+      <div class="alert alert-success">
+        <div class="container">{{messages.updateData}}</div>
+      </div>
+    {{/if}}
+
+    {{#if messages.delData}}
+      <div class="alert alert-danger">
+        <div class="container">{{messages.delData}}</div>
+      </div>
+    {{/if}}
+    {{! alert }}
 
     <div
       class="container bg-container rounded-4 shadow animate__animated animate__slideInUp"
@@ -238,15 +265,16 @@
                     {{/each}}
                   </div>
                   <div class="btn-bottom d-flex justify-content-center">
-                    <a
-                      href="/reproject/{{this.id}}"
-                      class="btn btn-dark me-1 p-0 w-50"
-                    >Edit</a>
-
-                    <a
-                      href="/delete/{{this.id}}"
-                      class="btn btn-dark p-0 w-50"
-                    >Delete</a>
+                    {{#if isLogin}}
+                      <a
+                        href="/reproject/{{this.id}}"
+                        class="btn btn-dark me-1 p-0 w-50"
+                      >Edit</a>
+                      <a
+                        href="/delete/{{this.id}}"
+                        class="btn btn-dark p-0 w-50"
+                      >Delete</a>
+                    {{/if}}
 
                   </div>
                 </div>

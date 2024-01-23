@@ -1,4 +1,7 @@
 //
+// bikin pengkondisian untuk email user yang regis gaboleh sama
+// Bikin Logout
+
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -9,6 +12,7 @@ const sequelize = new Sequelize(config.development);
 
 const bcrypt = require("bcrypt");
 const session = require("express-session");
+const flash = require("express-flash");
 
 app.set("view engine", "hbs");
 app.set("views", "src/views");
@@ -16,6 +20,7 @@ app.set("views", "src/views");
 // Middleware
 app.use("/assets", express.static("src/assets"));
 app.use(express.urlencoded({ extended: false }));
+app.use(flash());
 app.use(
   session({
     name: "data",
@@ -59,14 +64,19 @@ app.get("/contact-me", contact);
 async function home(req, res) {
   const tittleTab = "Home";
   const query = "SELECT * FROM projects";
-  const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
-  const isLogin = req.session.isLogin;
+  const objProjects = await sequelize.query(query, {
+    type: QueryTypes.SELECT,
+  });
+  const data = objProjects.map((res) => ({
+    ...res,
+    isLogin: req.session.isLogin,
+  }));
   const user = req.session.user;
+  const isLogin = req.session.isLogin;
 
   res.render("index", {
     tittleTab,
-    data: objProjects,
-    user: req.session.user,
+    data,
     isLogin,
     user,
   });
@@ -120,9 +130,10 @@ async function addProject(req, res) {
     time_project = `${days} Hari`;
   }
 
-  const query = `INSERT INTO projects (tittle, start_date, end_date, description, technologies,author,distance_date, "createdAt", "updatedAt") VALUES ('${tittle}', '${startDate}' , '${endDate}' , $$${desc}$$,'{${tech}}','${author}','${time_project}', NOW(), NOW())`;
+  const query = `INSERT INTO projects (tittle, start_date, end_date, description, technologies,author,distance_date, "createdAt", "updatedAt") VALUES ($$${tittle}$$, '${startDate}' , '${endDate}' , $$${desc}$$,'{${tech}}','${author}','${time_project}', NOW(), NOW())`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.INSERT });
 
+  req.flash("addData", "1 data added success.");
   res.redirect("home#resultProject");
 }
 
@@ -132,16 +143,24 @@ async function delProject(req, res) {
   const query = `DELETE FROM projects WHERE id= ${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.DELETE });
 
+  req.flash("delData", "1 data has been deleted.");
   res.redirect("/home#resultProject");
 }
 
 async function editProjectView(req, res) {
   const { id } = req.params;
-
+  const tittleTab = "Update Project";
   const query = `SELECT * FROM projects WHERE id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
+  const user = req.session.user;
+  const isLogin = req.session.isLogin;
 
-  res.render("update-project", { data: objProjects[0] });
+  res.render("update-project", {
+    tittleTab,
+    data: objProjects[0],
+    user,
+    isLogin,
+  });
 }
 
 async function editProject(req, res) {
@@ -183,9 +202,10 @@ async function editProject(req, res) {
     time_project = `${days} Hari`;
   }
 
-  const query = `UPDATE projects SET tittle='${tittle}', start_date='${startDate}', end_date='${endDate}', description=$$${desc}$$, technologies='{${tech}}',distance_date='${time_project}' WHERE id=${id}`;
+  const query = `UPDATE projects SET tittle=$$${tittle}$$, start_date='${startDate}', end_date='${endDate}', description=$$${desc}$$, technologies='{${tech}}',distance_date='${time_project}' WHERE id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.UPDATE });
-  console.log("ini data edit", objProjects);
+
+  req.flash("updateData", "1 data updated success.");
   res.redirect("/home#resultProject");
 }
 
@@ -195,6 +215,9 @@ async function projectDetail(req, res) {
 
   const query = `SELECT * FROM projects WHERE id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
+  const user = req.session.user;
+  const isLogin = req.session.isLogin;
+
   const monthList = [
     "Jan",
     "Feb",
@@ -227,6 +250,8 @@ async function projectDetail(req, res) {
     dataDetail: objProjects[0],
     fullStartDate,
     fullEndDate,
+    isLogin,
+    user,
   });
 }
 
@@ -245,7 +270,7 @@ function registerView(req, res) {
 
   res.render("register", { tittleTab, isLogin, user });
 }
-
+// bikin pengkondisian agar field kosong tidak bisa submit atau pindah halaman login
 async function register(req, res) {
   const { name, email, password } = req.body;
   const salt = 10;
@@ -258,8 +283,13 @@ async function register(req, res) {
     const query = `INSERT INTO users (name,email,password,"createdAt", "updatedAt") VALUES ('${name}', '${email}','${hash}', NOW(),NOW())`;
 
     const objUsers = await sequelize.query(query, { type: QueryTypes.INSERT });
+    // if (!objUsers.name || !objUsers.email || !objUsers.password) {
+    //   console, log("daftar terlebih dahulu");
+    //   return res.redirect("/register");
+    // }
   });
 
+  req.flash("success", "Register success! You can login now.");
   res.redirect("/login");
 }
 
@@ -278,16 +308,29 @@ async function login(req, res) {
   const objUsers = await sequelize.query(query, { type: QueryTypes.SELECT });
 
   if (!objUsers.length) {
+    req.flash("unregister", "User not registered! Please register first.");
     console.log("User not registered!");
+    return res.redirect("/login");
+  } else if (!objUsers[0].email || !objUsers[0].password) {
+    req.flash("dataNull", "Please enter your email and password.");
     return res.redirect("/login");
   }
 
   bcrypt.compare(password, objUsers[0].password, (err, result) => {
-    if (!result) {
-      console.log("Password is wrong!");
+    if (err) {
+      req.flash("danger", "Internal server error!");
       return res.redirect("/login");
     }
-    console.log("Login berhasil");
+
+    if (!result) {
+      req.flash(
+        "isWrong",
+        "Email or password is wrong! Check your email and password."
+      );
+      return res.redirect("/login");
+    }
+
+    req.flash("loginOn", "Login success!");
 
     req.session.isLogin = true;
     req.session.user = {

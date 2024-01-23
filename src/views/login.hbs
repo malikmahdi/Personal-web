@@ -30,6 +30,7 @@
     />
   </head>
   <body>
+    {{! Navbar }}
     <nav class="navbar bg-nav navbar-expand-lg px-lg-5 px-sm-4 py-4">
       <div class="container-fluid">
         <a class="navbar-brand nav-logo me-5" href="#"><img
@@ -50,7 +51,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item me-4">
-              <a class="nav-link" aria-current="page" href="/home">Home</a>
+              <a
+                class="nav-link text-dark"
+                aria-current="page"
+                href="/home"
+              >Home</a>
             </li>
             {{#if isLogin}}
               <li class="nav-item me-4">
@@ -74,7 +79,7 @@
             {{else}}
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item me-4">
-                  <a class="nav-link" href="/register">Register</a>
+                  <a class="nav-link text-dark" href="/register">Register</a>
                 </li>
                 <li class="nav-item me-4">
                   <a class="nav-link nav-active fw-bold" href="#">Login</a>
@@ -91,6 +96,27 @@
         </div>
       </div>
     </nav>
+    {{! navbar }}
+
+    {{! Alert }}
+    {{#if messages.unregister}}
+      <div class="alert alert-danger">
+        <div class="container">{{messages.unregister}}</div>
+      </div>
+    {{/if}}
+
+    {{#if messages.dataNull}}
+      <div class="alert alert-primary">
+        <div class="container">{{messages.dataNull}}</div>
+      </div>
+    {{/if}}
+
+    {{#if messages.isWrong}}
+      <div class="alert alert-warning">
+        <div class="container">{{messages.isWrong}}</div>
+      </div>
+    {{/if}}
+    {{! alert }}
 
     <!-- Form Content -->
     <div class="me-3 ms-3 pb-5">
