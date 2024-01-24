@@ -116,6 +116,18 @@
         <div class="container">{{messages.isWrong}}</div>
       </div>
     {{/if}}
+
+    {{#if messages.regisOn}}
+      <div class="alert alert-success">
+        <div class="container">{{messages.regisOn}}</div>
+      </div>
+    {{/if}}
+
+    {{#if messages.logoutOn}}
+      <div class="alert alert-danger">
+        <div class="container">{{messages.logoutOn}}</div>
+      </div>
+    {{/if}}
     {{! alert }}
 
     <!-- Form Content -->

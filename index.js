@@ -1,7 +1,3 @@
-//
-// bikin pengkondisian untuk email user yang regis gaboleh sama
-// Bikin Logout
-
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -56,6 +52,8 @@ app.post("/register", register);
 
 app.get("/login", loginView);
 app.post("/login", login);
+
+app.get("/logout", logOut);
 
 app.get("/contact-me", contact);
 // routing
@@ -270,10 +268,16 @@ function registerView(req, res) {
 
   res.render("register", { tittleTab, isLogin, user });
 }
-// bikin pengkondisian agar field kosong tidak bisa submit atau pindah halaman login
+
 async function register(req, res) {
   const { name, email, password } = req.body;
   const salt = 10;
+
+  if (!name || !email | !password) {
+    console.log("Gbisa masuk");
+    req.flash("regisNull", "Please register first.");
+    return res.redirect("/register");
+  }
 
   bcrypt.hash(password, salt, async (err, hash) => {
     if (err) {
@@ -283,13 +287,9 @@ async function register(req, res) {
     const query = `INSERT INTO users (name,email,password,"createdAt", "updatedAt") VALUES ('${name}', '${email}','${hash}', NOW(),NOW())`;
 
     const objUsers = await sequelize.query(query, { type: QueryTypes.INSERT });
-    // if (!objUsers.name || !objUsers.email || !objUsers.password) {
-    //   console, log("daftar terlebih dahulu");
-    //   return res.redirect("/register");
-    // }
   });
 
-  req.flash("success", "Register success! You can login now.");
+  req.flash("regisOn", "Register success! You can login now.");
   res.redirect("/login");
 }
 
@@ -310,9 +310,6 @@ async function login(req, res) {
   if (!objUsers.length) {
     req.flash("unregister", "User not registered! Please register first.");
     console.log("User not registered!");
-    return res.redirect("/login");
-  } else if (!objUsers[0].email || !objUsers[0].password) {
-    req.flash("dataNull", "Please enter your email and password.");
     return res.redirect("/login");
   }
 
@@ -340,6 +337,11 @@ async function login(req, res) {
 
     res.redirect("/home");
   });
+}
+
+function logOut(req, res) {
+  req.session.destroy();
+  res.redirect("login");
 }
 
 function contact(req, res) {
