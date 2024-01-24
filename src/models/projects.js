@@ -16,10 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       tittle: DataTypes.STRING,
       start_date: DataTypes.DATE,
       end_date: DataTypes.DATE,
-      author: DataTypes.STRING,
+      authorId: DataTypes.INTEGER,
       description: DataTypes.STRING,
       technologies: DataTypes.ARRAY(DataTypes.STRING),
-      diff_date: DataTypes.STRING,
+      image: DataTypes.STRING,
+      distance_date: DataTypes.STRING,
     },
     {
       sequelize,

@@ -1,20 +1,20 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-
 const config = require("./src/config/config.json");
 const { Sequelize, QueryTypes } = require("sequelize");
 const sequelize = new Sequelize(config.development);
-
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
+const upload = require("./src/middlewares/upload-file");
 
 app.set("view engine", "hbs");
 app.set("views", "src/views");
 
 // Middleware
 app.use("/assets", express.static("src/assets"));
+app.use("/uploads", express.static("src/uploads"));
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(
@@ -35,12 +35,12 @@ app.use(
 app.get("/home", home);
 
 app.get("/project", project);
-app.post("/project", addProject);
+app.post("/project", upload.single("image"), addProject);
 
 app.get("/delete/:id", delProject);
 
 app.get("/reproject/:id", editProjectView);
-app.post("/reproject", editProject);
+app.post("/reproject", upload.single("image"), editProject);
 
 app.get("/project-detail/:id", projectDetail);
 
@@ -61,7 +61,9 @@ app.get("/contact-me", contact);
 // Function
 async function home(req, res) {
   const tittleTab = "Home";
-  const query = "SELECT * FROM projects";
+  const query = `SELECT projects.id, projects.tittle, projects.start_date, projects.end_date,projects.description ,projects.technologies ,image,
+  projects.distance_date, projects."createdAt" , projects."updatedAt" ,
+  users.name AS author FROM projects INNER JOIN users ON projects."authorId" = users.id;`;
   const objProjects = await sequelize.query(query, {
     type: QueryTypes.SELECT,
   });
@@ -89,8 +91,10 @@ function project(req, res) {
 }
 
 async function addProject(req, res) {
+  const { id } = req.params;
   let { tittle, startDate, endDate, desc, tech } = req.body;
-  const author = "Malik Mahdi";
+  const authorId = req.session.user.id;
+  const image = req.file.filename;
 
   let startGet = new Date(startDate);
   let endGet = new Date(endDate);
@@ -128,9 +132,10 @@ async function addProject(req, res) {
     time_project = `${days} Hari`;
   }
 
-  const query = `INSERT INTO projects (tittle, start_date, end_date, description, technologies,author,distance_date, "createdAt", "updatedAt") VALUES ($$${tittle}$$, '${startDate}' , '${endDate}' , $$${desc}$$,'{${tech}}','${author}','${time_project}', NOW(), NOW())`;
+  const query = `INSERT INTO projects (tittle, start_date, end_date, "authorId",description, technologies,image,distance_date, "createdAt", "updatedAt") VALUES ($$${tittle}$$, '${startDate}' , '${endDate}','${authorId}', $$${desc}$$,'{${tech}}','${image}','${time_project}', NOW(), NOW())`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.INSERT });
 
+  console.log("ini dataobj project", objProjects);
   req.flash("addData", "1 data added success.");
   res.redirect("home#resultProject");
 }
@@ -164,6 +169,22 @@ async function editProjectView(req, res) {
 async function editProject(req, res) {
   let { tittle, startDate, endDate, desc, tech, id } = req.body;
 
+  let image = "";
+  if (req.file) {
+    console.log("ini req file baru dari user", req.file);
+    image = req.file.filename;
+  }
+
+  if (!image) {
+    const query = `SELECT projects.id, projects.tittle, projects.start_date, projects.end_date,projects.description ,projects.technologies ,projects.image,
+     projects.distance_date, projects."createdAt" , projects."updatedAt" ,
+    users.name AS author FROM projects LEFT JOIN users ON projects."authorId" = users.id;`;
+    const objProjects = await sequelize.query(query, {
+      type: QueryTypes.SELECT,
+    });
+    image = objProjects[0].image;
+  }
+
   let startGet = new Date(startDate);
   let endGet = new Date(endDate);
 
@@ -199,8 +220,8 @@ async function editProject(req, res) {
   } else if (days > 0) {
     time_project = `${days} Hari`;
   }
-
-  const query = `UPDATE projects SET tittle=$$${tittle}$$, start_date='${startDate}', end_date='${endDate}', description=$$${desc}$$, technologies='{${tech}}',distance_date='${time_project}' WHERE id=${id}`;
+  const query = `UPDATE projects SET tittle=$$${tittle}$$, start_date='${startDate}', end_date='${endDate}', 
+  description=$$${desc}$$,technologies='{${tech}}',image='${image}', distance_date='${time_project}' WHERE id = ${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.UPDATE });
 
   req.flash("updateData", "1 data updated success.");
@@ -211,10 +232,13 @@ async function projectDetail(req, res) {
   const { id } = req.params;
   const tittleTab = "Detail Project";
 
-  const query = `SELECT * FROM projects WHERE id=${id}`;
+  const query = `SELECT projects.id, projects.tittle, projects.start_date, projects.end_date,projects.description ,projects.technologies ,
+  projects.distance_date, projects."createdAt" , projects."updatedAt" ,
+  users.name AS author FROM projects INNER JOIN users ON projects."authorId" = users.id WHERE projects.id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
   const user = req.session.user;
   const isLogin = req.session.isLogin;
+  console.log("ini data obj", objProjects);
 
   const monthList = [
     "Jan",
@@ -242,7 +266,6 @@ async function projectDetail(req, res) {
 
   const fullStartDate = `${dateStart} ${monthList[monthStart]} ${yearStart}`;
   const fullEndDate = `${dateEnd} ${monthList[monthEnd]} ${yearEnd}`;
-
   res.render("project-detail", {
     tittleTab,
     dataDetail: objProjects[0],
@@ -331,6 +354,7 @@ async function login(req, res) {
 
     req.session.isLogin = true;
     req.session.user = {
+      id: objUsers[0].id,
       name: objUsers[0].name,
       email: objUsers[0].email,
     };

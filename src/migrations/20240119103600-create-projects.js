@@ -21,8 +21,12 @@ module.exports = {
       end_date: {
         type: Sequelize.DATE,
       },
-      author: {
-        type: Sequelize.STRING,
+      authorId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       description: {
         type: Sequelize.TEXT,
@@ -30,7 +34,10 @@ module.exports = {
       technologies: {
         type: Sequelize.ARRAY(DataTypes.STRING),
       },
-      diff_date: {
+      image: {
+        type: Sequelize.STRING,
+      },
+      distance_date: {
         type: Sequelize.STRING,
       },
       createdAt: {
