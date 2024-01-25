@@ -61,18 +61,30 @@ app.get("/contact-me", contact);
 // Function
 async function home(req, res) {
   const tittleTab = "Home";
-  const query = `SELECT projects.id, projects.tittle, projects.start_date, projects.end_date,projects.description ,projects.technologies ,image,
-  projects.distance_date, projects."createdAt" , projects."updatedAt" ,
-  users.name AS author FROM projects INNER JOIN users ON projects."authorId" = users.id;`;
-  const objProjects = await sequelize.query(query, {
-    type: QueryTypes.SELECT,
-  });
+  const user = req.session.user;
+  const isLogin = req.session.isLogin;
+  // try {
+  let objProjects;
+
+  if (req.session.isLogin) {
+    const authorId = req.session.user.id;
+    objProjects = await sequelize.query(
+      `SELECT projects.id, projects.tittle, projects.description, projects.distance_date, projects.image, projects."authorId", 
+         projects."createdAt", projects."updatedAt", projects.technologies, users.name FROM projects INNER JOIN users ON projects."authorId" = users.id where "authorId" = ${authorId} ORDER BY projects.id DESC`,
+      { type: QueryTypes.SELECT }
+    );
+  } else {
+    objProjects = await sequelize.query(
+      `SELECT projects.id, projects.tittle, projects.description, projects.distance_date, projects.image, projects."authorId", 
+         projects."createdAt", projects."updatedAt", projects.technologies, users.name FROM projects INNER JOIN users ON projects."authorId" = users.id ORDER BY projects.id DESC`,
+      { type: QueryTypes.SELECT }
+    );
+  }
+
   const data = objProjects.map((res) => ({
     ...res,
     isLogin: req.session.isLogin,
   }));
-  const user = req.session.user;
-  const isLogin = req.session.isLogin;
 
   res.render("index", {
     tittleTab,
