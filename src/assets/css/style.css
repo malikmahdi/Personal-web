@@ -1,0 +1,61 @@
+body {
+  background-color: #e3e7eb !important;
+}
+
+.logout-group i:hover {
+  color: rgb(226, 0, 0) !important;
+}
+
+.bg-container {
+  background-color: #fff;
+}
+
+.paraf {
+  text-align: justify;
+}
+
+.container-btnlink .btn-contact:hover {
+  text-decoration: none !important;
+  background-color: #0058dc !important;
+}
+
+.container-btnlink a:hover {
+  text-decoration: underline !important;
+}
+.container-btnlink img {
+  width: 26px;
+}
+
+.ikon {
+  letter-spacing: 15px;
+  margin-top: 65px;
+}
+
+.ikon img {
+  width: 45px;
+}
+.ikon img:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
+
+.ikon-tech {
+  letter-spacing: 2px;
+}
+
+.card-proj {
+  transition: transform 0.2s;
+}
+
+.card-proj:hover {
+  -ms-transform: scale(1.04);
+  -webkit-transform: scale(1.04);
+  transform: scale(1.04);
+}
+
+.btn-add-proj {
+  background-color: #f43346 !important;
+}
+
+.btn-add-proj:hover {
+  background-color: #c93342 !important;
+}

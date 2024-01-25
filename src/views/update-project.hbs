@@ -1,0 +1,291 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personal Web | {{tittleTab}}</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/fav-mylogo.png" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+    <link rel="stylesheet" href="../assets/css/nav.css" />
+
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <!-- Cdn Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Cdn Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar bg-nav navbar-expand-lg px-lg-5 px-sm-4 py-4">
+      <div class="container-fluid">
+        <a class="navbar-brand me-5" href="#"><img
+            src="../assets/img/mylogo.png"
+            alt=""
+          /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item me-4">
+              <a
+                class="nav-link text-dark"
+                aria-current="page"
+                href="/home"
+              >Home</a>
+            </li>
+            {{#if isLogin}}
+              <li class="nav-item me-4">
+                <a class="nav-link text-dark" href="/project">Add Project</a>
+              </li>
+            {{/if}}
+            <li class="nav-item me-4">
+              <a class="nav-link text-dark" href="/testimonial">Testimonials</a>
+            </li>
+          </ul>
+                    <form class="d-flex" role="">
+            {{#if isLogin}}
+              <div class="mt-2 me-3"><h5 class="text-secondary"><i
+                    class="fa-solid fa-user"
+                  ></i>
+                  Hallo,
+                  {{user.name}}</h5>
+              </div>
+              <div class="logout-group mt-3 me-3"><a href="/logOut">
+                  <i
+                    title="Click here to Logout"
+                    class="fa-solid text-dark fa-right-from-bracket mt-1 fa-xl"
+                  ></i></a></div>
+            {{else}}
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item me-4">
+                  <a
+                    class="nav-link nav-active fw-bold"
+                    href="/register"
+                  >Register</a>
+                </li>
+                <li class="nav-item me-4">
+                  <a class="nav-link text-dark" href="/login">Login</a>
+                </li>
+              </ul>
+            {{/if}}
+          </form>
+          <a
+            href="/contact-me"
+            class="btn btn-contact-me bg-primary text-light"
+            type="submit"
+          >
+            Contact Me</a>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- Close Navbar -->
+
+    <!-- Content -->
+    <div class="me-3 ms-3 mb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 mt-3">
+          <h1 class="text-center fw-bold mt-5 mb-4 pb-4">UPDATE PROJECT</h1>
+          <form method="POST" action="/reproject" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{data.id}}" />
+            <!-- Input Name -->
+            <div class="">
+              <label for="inputTittle" class="form-label fw-medium">Project Name</label>
+              <input
+                type="text"
+                class="form-control shadow"
+                id="inputTittle"
+                name="tittle"
+                value="{{data.tittle}}"
+                aria-describedby="emailHelp"
+              />
+            </div>
+
+            <!-- Input Date -->
+            <div class="mb-3 row">
+              <div class="col-lg-6 col-sm-12 mt-3">
+                <label for="inputStartDate" class="form-label fw-medium">Start
+                  Date</label>
+                <input
+                  type="date"
+                  class="form-control shadow"
+                  id="inputStartDate"
+                  name="startDate"
+                  value="{{data.start_date}}"
+                />
+              </div>
+
+              <div class="col-lg-6 col-sm-12 mt-3">
+                <label for="inputEndDate" class="form-label fw-medium">End Date</label>
+                <input
+                  type="date"
+                  class="form-control shadow"
+                  id="inputEndDate"
+                  name="endDate"
+                  value="{{data.end_date}}"
+                />
+              </div>
+            </div>
+
+            <!-- Input Description -->
+            <div class="mb-3">
+              <label
+                for="description"
+                class="form-label fw-medium"
+              >Description</label>
+              <textarea
+                type="text"
+                class="form-control shadow"
+                id="description"
+                name="desc"
+                rows="8"
+              >{{data.description}}</textarea>
+            </div>
+
+            <!-- Input Checbox Technologies -->
+            <div class="mb-3">
+              <label for="" class="form-label fw-medium">Technologies</label>
+              {{! Row 1 }}
+              <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                  <div class="mb-3 form-check d-flex align-items-center">
+                    <input
+                      type="checkbox"
+                      class="form-check-input shadow"
+                      id="inputReact"
+                      name="tech"
+                      value="react"
+                    />
+                    <label
+                      class="form-check-label text-secondary ms-2"
+                      for="inputReact"
+                    >React Js</label>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                  <div class="mb-3 form-check d-flex align-items-center">
+                    <input
+                      type="checkbox"
+                      class="form-check-input shadow"
+                      id="inputGolang"
+                      name="tech"
+                      value="golang"
+                    />
+                    <label
+                      class="form-check-label ms-2 text-secondary"
+                      for="inputGolang"
+                    >Golang</label>
+                  </div>
+                </div>
+              </div>
+              {{! row 1 }}
+
+              {{! Row 2 }}
+              <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                  <div class="mb-3 form-check d-flex align-items-center">
+                    <input
+                      type="checkbox"
+                      class="form-check-input shadow"
+                      id="inputBootstrap"
+                      name="tech"
+                      value="bootstrap"
+                    />
+                    <label
+                      class="form-check-label ms-2 text-secondary"
+                      for="inputBootstrap"
+                    >Bootstrap</label>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                  <div class="mb-3 form-check d-flex align-items-center">
+                    <input
+                      type="checkbox"
+                      class="form-check-input shadow"
+                      id="inputJava"
+                      name="tech"
+                      value="java"
+                    />
+                    <label
+                      class="form-check-label ms-2 text-secondary"
+                      for="inputJava"
+                    >Java</label>
+                  </div>
+                </div>
+              </div>
+              {{! row 2 }}
+            </div>
+
+            <div class="content-upload">
+              <label class="fw-medium">Upload Image</label>
+              <div
+                class="input-blog-image-group w-100 bg-white mt-2 rounded pe-1 shadow"
+              >
+                <label
+                  for="inputImage"
+                  class="d-flex justify-content-between align-items-center"
+                >
+                  <p class="text-center rounded text-secondary">Choose</p>
+                  <img
+                    src="../assets/img/clip.png"
+                    class="me-1 mb-3"
+                    alt="file"
+                  />
+                </label>
+                <input type="file" id="inputImage" name="image" hidden />
+              </div>
+            </div>
+
+            <!-- Button Submit -->
+            <div class="text-end mt-5">
+              <button
+                type="submit"
+                class="btn btn-dark btn-submit rounded-5 pe-4 ps-4 text-end"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const selectedTechs = "{{data.technologies}}"; const reactBox =
+      document.getElementById("inputReact"); const vueBox =
+      document.getElementById("inputGolang"); const nodeBox =
+      document.getElementById("inputBootstrap"); const jsBox =
+      document.getElementById("inputJava"); reactBox.checked =
+      selectedTechs.includes("react"); vueBox.checked =
+      selectedTechs.includes("golang"); nodeBox.checked =
+      selectedTechs.includes("bootstrap"); jsBox.checked =
+      selectedTechs.includes("java");
+
+    </script>
+  </body>
+</html>

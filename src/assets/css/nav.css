@@ -1,0 +1,49 @@
+.bg-nav {
+  background-color: #f4f3f3;
+}
+
+.nav-active {
+  color: #004fc6 !important;
+}
+
+.navbar-brand img {
+  width: 70px;
+}
+
+.nav-link:hover {
+  color: #004fc6 !important;
+}
+
+.nav-item a {
+  position: relative;
+}
+
+.nav-item a:after {
+  content: "";
+  position: absolute;
+  background-color: #004fc6;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -5;
+  transition: 0.3s;
+}
+
+.nav-item a:hover:after {
+  width: 100%;
+}
+
+.nav-item .link-active:after {
+  content: "";
+  position: absolute;
+  background-color: #004fc6;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  bottom: -5;
+  transition: 0.3s;
+}
+
+.btn-contact-me:hover {
+  background-color: #004fc6 !important;
+}

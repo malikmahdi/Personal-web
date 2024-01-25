@@ -1,0 +1,15 @@
+body {
+  background-color: #e3e7eb !important;
+}
+
+/* Style Content Form */
+.form-select {
+  background-image: url("../img/downarrow.png") !important;
+  background-size: 12px 18px !important;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #0058dc !important;
+}
+/* Close Style Content Form */

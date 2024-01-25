@@ -1,0 +1,32 @@
+[
+  {
+    "author": "Agun",
+    "review": "Keren bangetttt",
+    "image": "assets/img/people1.jpg",
+    "rating": 5
+  },
+  {
+    "author": "Alif",
+    "review": "Lumayan",
+    "image": "assets/img/people1.jpg",
+    "rating": 3
+  },
+  {
+    "author": "Firdaus",
+    "review": "Saya kurang suka",
+    "image": "assets/img/people1.jpg",
+    "rating": 1
+  },
+  {
+    "author": "Malik",
+    "review": "Tidak masalah",
+    "image": "assets/img/people1.jpg",
+    "rating": 3
+  },
+  {
+    "author": "Lukman",
+    "review": "Mantap pokoknya",
+    "image": "assets/img/people1.jpg",
+    "rating": 5
+  }
+]
