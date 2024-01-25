@@ -1,6 +1,6 @@
 const janji = new Promise((resolve, reject) => {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://api.npoint.io/138098154e7a6e3e3724", true);
+  xhr.open("GET", "http://localhost:3000/dataTestimonial", true);
   xhr.onload = () => {
     if (xhr.status === 200) {
       console.info(xhr.response);

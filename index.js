@@ -63,7 +63,7 @@ async function home(req, res) {
   const tittleTab = "Home";
   const user = req.session.user;
   const isLogin = req.session.isLogin;
-  // try {
+
   let objProjects;
 
   if (req.session.isLogin) {
@@ -244,7 +244,7 @@ async function projectDetail(req, res) {
   const { id } = req.params;
   const tittleTab = "Detail Project";
 
-  const query = `SELECT projects.id, projects.tittle, projects.start_date, projects.end_date,projects.description ,projects.technologies ,
+  const query = `SELECT projects.id, projects.tittle, projects.start_date, projects.end_date,projects.description ,projects.technologies ,projects.image,
   projects.distance_date, projects."createdAt" , projects."updatedAt" ,
   users.name AS author FROM projects INNER JOIN users ON projects."authorId" = users.id WHERE projects.id=${id}`;
   const objProjects = await sequelize.query(query, { type: QueryTypes.SELECT });
@@ -422,7 +422,7 @@ function dataTesti(req, res) {
     },
   ]);
 }
-// function
+// functio
 
 app.listen(port, () => {
   console.log(`Server berjalan di port ${port}`);

@@ -1,9 +1,9 @@
 let dataProject = [];
 
-document.addEventListener("DOMContentLoaded", () => {
-  dataProject = JSON.parse(localStorage.getItem("projects")) ?? [];
-  renderProject();
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   dataProject = JSON.parse(localStorage.getItem("projects")) ?? [];
+//   renderProject();
+// });
 
 function submitProject(event) {
   // Agar halaman tidak reload ketika button diklik
@@ -142,7 +142,7 @@ File image : ${image}`
 
   dataProject.unshift(fillProject);
   console.log("Data project : ", dataProject);
-  localStorage.setItem("projects", JSON.stringify(dataProject));
+  // localStorage.setItem("projects", JSON.stringify(dataProject));
   renderProject();
 }
 
